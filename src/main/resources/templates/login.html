@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+</head>
+
+<body style="background-color: #0c989b">
+
+<section class="header2">
+<div class="btn-box"></div>
+<div class="center">
+    <div class="square">
+        <form name="loginVerify" action="/loginVerify" method="POST">
+
+            <div class="col">
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="username" style="margin-top: 10px" class="control-label">Username</label>
+                        <input type="text" class="form-control" name="username" id="username" value="">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password</label>
+                        <input type="text" class="form-control" name="password" id="password" value="">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <div class="nav-links" id="center" style="margin-top: -9px">
+                            <ul>
+                                <li><button name="post" type="submit" value="0">log in</button></li>
+                                <li><button type="button" th:onclick="|window.location.href='/register'|">sign up</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+</section>
+</body>
+</html>

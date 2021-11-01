@@ -5,20 +5,18 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private boolean gender;
     private String street;
     private String city;
     private String zip;
 
     public User(String username, String password,
                 String email, String phone,
-                boolean gender, String street,
-                String city, String zip) {
+                String street, String city,
+                String zip) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.gender = gender;
         this.street = street;
         this.city = city;
         this.zip = zip;
@@ -56,14 +54,6 @@ public class User {
         this.phone = phone;
     }
 
-    public boolean isGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
-
     public String getStreet() {
         return street;
     }
@@ -95,7 +85,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", gender=" + gender +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", zip='" + zip + '\'' +

@@ -14,6 +14,15 @@
     position: relative;
 }
 
+.header2 {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(blue-background-aqua-texture-gradient-light-blur-blend-vector-id1132462892.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
 nav {
     display: flex;
     padding: 2% 6%;
@@ -47,7 +56,7 @@ nav img {
     content: '';
     width: 0%;
     height: 2px;
-    background: #f44336;
+    background: #9befed;
     display: block;
     margin: auto;
     transition: 0.5s;
@@ -258,13 +267,14 @@ h3{
 .cta{
     margin: 100px auto;
     width: 80%;
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("images/banner2.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("Design_uden_navn_1.png");
     background-position: center;
     background-size: cover;
     border-radius: 10px;
     text-align: center;
     padding: 100px 0;
 }
+
 .cta h1{
     color: #fff;
     margin-bottom: 40px;
@@ -283,3 +293,53 @@ h3{
     margin-top: 20px;
     font-weight: 600;
 }
+
+.center {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+#center {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.square {
+    border: 2px solid white;
+    margin-top: 300px;
+    width: 500px;
+    height: 225px;
+    border-radius: 5px;
+    color: white;
+}
+
+.square-register {
+    border: 2px solid white;
+    margin-top: 50px;
+    width: 500px;
+    height: 850px;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn {
+    background-color: #efbe9d;
+    color: grey;
+}
+
+.btn:hover {
+    background-color: grey;
+}
+
+button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+

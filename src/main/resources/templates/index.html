@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <title>Start</title>
     <link rel="stylesheet" href="style.css">
@@ -13,11 +13,12 @@
 <body>
 <section class="header">
     <nav>
-        <a href="index.html"><img src="images/Logo hjemmeside.png"></a>
+        <a href="index.html"><img src="Design_uden_navn_1.png"></a>
         <div class="nav-links" id="navLinks">
             <ul>
-                <li><a href="">SIGN UP</a></li>
-                <li><a href="">LOG IN</a></li>
+
+                <li><a th:href="@{/register}">SIGN UP</a></li>
+                <li><a th:href="@{/login}">LOG IN</a></li>
 
             </ul>
         </div>
