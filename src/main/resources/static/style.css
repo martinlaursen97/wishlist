@@ -1,0 +1,14 @@
+.root {
+    --primary-color: #a7ffeb;
+}
+
+body {
+    align-content: center;
+    margin: 0;
+}
+
+.header-box {
+    background-color: #a7ffeb;
+    height: 100px;
+    width: 100%;
+}
