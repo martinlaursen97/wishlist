@@ -7,12 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 
     @GetMapping("/")
-    public String index1() {
+    public String index() {
         return "index";
     }
 
-    @GetMapping("/test")
-    public String index2() {
-        return "index";
-    }
 }
