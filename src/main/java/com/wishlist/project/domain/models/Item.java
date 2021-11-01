@@ -1,4 +1,4 @@
-package domain.models;
+package com.wishlist.project.domain.models;
 
 public class Item {
     private String name;
