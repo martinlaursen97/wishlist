@@ -70,8 +70,7 @@ public class UserController {
     }
 
     @GetMapping("/overview")
-    public String overview(WebRequest request) {
-
+    public String overview() {
         return "overview";
     }
 }
