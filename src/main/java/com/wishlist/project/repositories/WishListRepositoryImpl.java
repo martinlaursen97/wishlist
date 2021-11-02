@@ -1,10 +1,12 @@
 package com.wishlist.project.repositories;
 
 import com.wishlist.project.domain.models.WishList;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+@Repository
 public class WishListRepositoryImpl implements WishListRepository {
 
     private final Connection connection = DBManager.getConnection();
