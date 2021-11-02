@@ -1,6 +1,7 @@
 package com.wishlist.project.domain.services;
 
 import com.wishlist.project.domain.models.User;
+import com.wishlist.project.repositories.UserRepository;
 import com.wishlist.project.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +9,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private final UserRepositoryImpl userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepositoryImpl userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
