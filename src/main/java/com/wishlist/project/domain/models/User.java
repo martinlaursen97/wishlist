@@ -1,6 +1,7 @@
 package com.wishlist.project.domain.models;
 
 public class User {
+    private long id;
     private String username;
     private String password;
     private String email;
@@ -20,6 +21,18 @@ public class User {
         this.street = street;
         this.city = city;
         this.zip = zip;
+    }
+
+    public User() {
+
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -81,7 +94,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
