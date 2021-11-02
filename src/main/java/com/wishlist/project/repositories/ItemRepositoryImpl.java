@@ -14,7 +14,7 @@ public class ItemRepositoryImpl implements ItemRepository{
     @Override
     public void createItem(Item item) {
         try {
-            String query = "insert into sql11448324.tem(name, wishlist_id, image_url, price, location, notes, reserved) values (?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into sql11448324.item(name, wishlist_id, image_url, price, location, notes, reserved) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
             preparedStatement = connection.prepareStatement(query);
