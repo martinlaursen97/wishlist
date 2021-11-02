@@ -1,11 +1,11 @@
 package com.wishlist.project.domain.models;
 
-public class Wishlist {
+public class WishList {
     private String name;
     private String notes;
     private String code;
 
-    public Wishlist(String name, String notes, String code) {
+    public WishList(String name, String notes, String code) {
         this.name = name;
         this.notes = notes;
         this.code = code;
