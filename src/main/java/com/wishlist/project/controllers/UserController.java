@@ -63,9 +63,15 @@ public class UserController {
         if (userService.loginValid(username, password)) {
             User user = userService.findByUsername(username);
             request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
-            return "index";
+            return "redirect:/overview";
         }
 
         return "login";
+    }
+
+    @GetMapping("/overview")
+    public String overview(WebRequest request) {
+
+        return "overview";
     }
 }
