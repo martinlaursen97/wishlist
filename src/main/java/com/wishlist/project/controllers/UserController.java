@@ -43,6 +43,11 @@ public class UserController {
         String city = request.getParameter("city");
         String zip = request.getParameter("zip");
 
+        if (username == null ||
+            password == null) {
+            return "register";
+        }
+
         if (!userService.usernameTaken(username)) {
             userService.createUser(username, password, email, phone, street, city, zip);
             return "login";
@@ -60,6 +65,7 @@ public class UserController {
             request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
             return "index";
         }
+
         return "login";
     }
 }
