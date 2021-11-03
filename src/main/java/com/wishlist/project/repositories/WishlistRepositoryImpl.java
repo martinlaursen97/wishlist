@@ -1,6 +1,6 @@
 package com.wishlist.project.repositories;
 
-import com.wishlist.project.domain.models.WishList;
+import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -11,20 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class WishListRepositoryImpl implements WishListRepository {
+public class WishlistRepositoryImpl implements WishlistRepository {
 
     private final Connection connection = DBManager.getConnection();
 
     @Override
-    public void createWishList(WishList wishList) {
+    public void createWishlist(Wishlist wishlist) {
         try {
-            String query = "insert into sql11448324.wishlist(name,notes,code) values (?, ?, ?)";
+            String query = "insert into sql11448324.wishlist(user_id,name,notes,code,creation_date) values (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
+            System.out.println(wishlist.getUserId());
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, wishList.getName());
-            preparedStatement.setString(2, wishList.getNotes());
-            preparedStatement.setString(3, wishList.getCode());
+            preparedStatement.setLong(1, wishlist.getUserId());
+            preparedStatement.setString(2, wishlist.getName());
+            preparedStatement.setString(3, wishlist.getNotes());
+            preparedStatement.setString(4, wishlist.getCode());
+            preparedStatement.setString(5, wishlist.getDate());
             preparedStatement.executeUpdate();
 
         } catch (Exception ignore) {
@@ -33,26 +36,27 @@ public class WishListRepositoryImpl implements WishListRepository {
     }
 
     @Override
-    public List<WishList> getWishLists(long id) {
-        List<WishList> wishLists = new ArrayList<>();
+    public List<Wishlist> getWishlists(long id) {
+        List<Wishlist> wishlists = new ArrayList<>();
         try {
             String query = "SELECT * FROM sql11448324.wishlist WHERE user_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
-                WishList wishList = new WishList();
+                Wishlist wishList = new Wishlist();
                 wishList.setId(resultSet.getLong("wishlist_id"));
                 wishList.setUserId(resultSet.getLong("user_id"));
                 wishList.setName(resultSet.getString("name"));
                 wishList.setNotes(resultSet.getString("notes"));
                 wishList.setCode(resultSet.getString("code"));
-                wishLists.add(wishList);
+                wishList.setDate(resultSet.getString("creation_date"));
+                wishlists.add(wishList);
             }
         } catch (SQLException ignore) {
 
         }
-        return wishLists;
+        return wishlists;
     }
 }
 

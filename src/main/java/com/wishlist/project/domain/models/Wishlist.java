@@ -1,19 +1,22 @@
 package com.wishlist.project.domain.models;
 
-public class WishList {
+public class Wishlist {
     private long id;
     private long userId;
     private String name;
     private String notes;
     private String code;
+    private String date;
 
-    public WishList(String name, String notes, String code) {
+    public Wishlist(long userId, String name, String notes, String code, String date) {
+        this.userId = userId;
         this.name = name;
         this.notes = notes;
         this.code = code;
+        this.date = date;
     }
 
-    public WishList() {
+    public Wishlist() {
 
     }
 
@@ -55,5 +58,13 @@ public class WishList {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

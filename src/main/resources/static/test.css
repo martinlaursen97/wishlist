@@ -90,6 +90,7 @@ body {
 }
 
 .container {
+    margin-top: 25px;
     text-align: center;
     width: 800px;
     background-color: whitesmoke;
@@ -99,17 +100,12 @@ body {
     margin-bottom: 25px;
     text-align: center;
     width: 800px;
+
     background-color: whitesmoke;
+
 }
 
 
-
-.content-box {
-    margin-bottom: 25px;
-    text-align: center;
-    width: 800px;
-    background-color: whitesmoke;
-}
 
 .dropbtn {
     background-color: #9befed;
@@ -140,9 +136,8 @@ body {
 .wish-btn-container {
     height: 100px;
     width: 800px;
-    border: solid grey 1px;
-    display: inline;
     float:left;
+    background-color: white;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -216,4 +211,36 @@ form.example::after {
     content: "";
     clear: both;
     display: table;
+}
+
+.wishlist-object {
+    clear:both;
+    width: 800px;
+}
+
+.wishlist-name {
+
+    font-size:20px;
+    height: 30px;
+    width: 800px;
+    background-color: #9befed;
+    color: white;
+}
+
+.wishlist-notes {
+
+    height: 70px;
+    width: 600px;
+    position: relative;
+   left:100px;
+
+
+}
+
+.wishlist-options {
+    position:relative;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    float: right;
 }

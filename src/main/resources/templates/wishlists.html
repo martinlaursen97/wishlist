@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Add</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="test.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
 
 
 
@@ -31,13 +41,26 @@
 <div class="center">
     <div class="content-box">
         <div class="wish-btn-container">
-            <button class="add-wish-btn">create wishlist</button>
+            <button class="add-wish-btn" th:onclick="|window.location.href='/createWishlist'|">create wishlist</button>
             <button class="add-wish-btn">test</button>
         </div>
+
         <tr th:each="wishlist: ${wishlists}">
-            <td th:text="${wishlist.name}"></td>
-            <br>
+            <div class="wishlist-object">
+                <div class="wishlist-name">
+                    <td th:text="${wishlist.name}"></td>
+                </div>
+                <!---<div class="wishlist-options">--->
+                <!---    <a href="" class="fa fa-trash-o" style="font-size: 40px; text-decoration: none"></a>--->
+                <!---</div>--->
+                <div class="wishlist-notes">
+                    <td th:text="${wishlist.notes}"></td>
+
+                </div>
+
+            </div>
         </tr>
+
     </div>
 
 </div>

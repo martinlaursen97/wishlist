@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
+
+
+
+</head>
+
+<body>
+<div class="btn-box">
+    <button type="button" th:onclick="|window.location.href='/menu'|" class="logo">Logo</button>
+    <div class="center">
+
+        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">wishlists</button>
+        <div class="btn-divider"></div>
+        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">reserved items</button>
+
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" th:text="usernaem">Dropdown</button>
+        <div class="dropdown-content">
+            <a th:href="@{/login}">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <div class="container">
+        <form name="createWishlistVerify" action="/createWishlistVerify" method="POST">
+            <div class="col">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name" class="control-label">name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="give your wishlist a name..."/><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="notes" class="control-label">description</label>
+                        <input type="text" name="notes" class="form-control" id="notes" placeholder="describe your wishlist..."/><br>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <button name="post" type="submit" value="0" class="btn">create</button>
+                        <button type="button" th:onclick="|window.location.href='/wishlists'|" value="0" class="btn">back</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
