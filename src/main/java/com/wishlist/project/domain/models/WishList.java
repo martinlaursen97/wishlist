@@ -1,6 +1,8 @@
 package com.wishlist.project.domain.models;
 
 public class WishList {
+    private long id;
+    private long userId;
     private String name;
     private String notes;
     private String code;
@@ -9,6 +11,26 @@ public class WishList {
         this.name = name;
         this.notes = notes;
         this.code = code;
+    }
+
+    public WishList() {
+
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

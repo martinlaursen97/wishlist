@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+<div class="btn-box">
+    <button type="button" th:onclick="|window.location.href='/menu'|" class="logo">Logo</button>
+    <div class="center">
+
+            <button type="button" class="btn" th:onclick="|window.location.href='/login'|">wishlists</button>
+            <div class="btn-divider"></div>
+            <button type="button" class="btn" th:onclick="|window.location.href='/login'|">reserved items</button>
+
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" th:text="usernaem">Dropdown</button>
+        <div class="dropdown-content">
+            <a th:href="@{/login}">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <div class="content-box">
+        <div class="wish-btn-container">
+            <button class="add-wish-btn">create wishlist</button>
+            <button class="add-wish-btn">test</button>
+        </div>
+        <tr th:each="wishlist: ${wishlists}">
+            <td th:text="${wishlist.name}"></td>
+            <br>
+        </tr>
+    </div>
+
+</div>
+
+
+</body>
+</html>

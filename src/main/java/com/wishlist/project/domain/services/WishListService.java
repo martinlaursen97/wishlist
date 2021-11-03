@@ -5,6 +5,8 @@ import com.wishlist.project.repositories.WishListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WishListService {
 
@@ -19,5 +21,9 @@ public class WishListService {
     public void createWishList(String name, String notes, String code) {
         WishList wishList = new WishList(name, notes, code);
         wishListRepository.createWishList(wishList);
+    }
+
+    public List<WishList> getWishLists(long id) {
+        return wishListRepository.getWishLists(id);
     }
 }

@@ -1,0 +1,219 @@
+body {
+    align-content: center;
+    margin: 0;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-box {
+    background-color: #9befed;
+    height: 100px;
+    width: 100%;
+}
+
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 150px;
+}
+
+
+.center {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.center2 {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 30%;
+}
+
+#decenter {
+    text-align: left;
+    justify-content: left;
+    display: flex;
+}
+
+.btn {
+    font-size: 16px;
+    color: white;
+    border: solid 3px white;
+    background-color: #29d9dc;
+    border-radius: 60px;
+    position: relative;
+    height: 50px;
+    width: 150px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0c989b;
+    color: whitesmoke;
+}
+
+.btn-divider {
+    width: 25px;
+}
+
+.logo {
+    background-color: #9befed;
+    color: white;
+    height: 100px;
+    width: 100px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+
+    left: 0;
+    top: 0;
+}
+
+.row {
+    margin-left: 25px;
+    width: 600px;
+    height: 25px;
+    position:relative;
+    display:block;
+    text-align: left;
+}
+
+.container {
+    text-align: center;
+    width: 800px;
+    background-color: whitesmoke;
+}
+
+.content-box {
+    margin-bottom: 25px;
+    text-align: center;
+    width: 800px;
+    background-color: whitesmoke;
+}
+
+
+
+.content-box {
+    margin-bottom: 25px;
+    text-align: center;
+    width: 800px;
+    background-color: whitesmoke;
+}
+
+.dropbtn {
+    background-color: #9befed;
+    color: white;
+    height: 100px;
+    width: 200px;
+    font-size: 20px;
+    border: none;
+}
+
+.add-wish-btn {
+    height: 50px;
+    border-radius: 10px;
+    width: 300px;
+    border: 3px solid grey;
+    display: inline;
+    background-color: #29d9dc;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    margin:25px;
+}
+
+.add-wish-btn:hover {
+    background-color: #0c989b;
+}
+
+.wish-btn-container {
+    height: 100px;
+    width: 800px;
+    border: solid grey 1px;
+    display: inline;
+    float:left;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #29d9dc;;}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #007ac1;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #02a9f4;
+}
+
+/* Clear floats */
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}

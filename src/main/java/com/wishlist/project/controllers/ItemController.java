@@ -17,8 +17,8 @@ public class ItemController {
     }
 
     @GetMapping("/createItem")
-    public String createItem(Webrequest request){
-        String name = request.parameter;
+    public String createItem(){
+        String name = "test";
         long wishListId = 12345678;
         String imageUrl = "url";
         double price = 1.3;
