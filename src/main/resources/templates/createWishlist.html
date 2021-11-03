@@ -24,15 +24,15 @@
     <button type="button" th:onclick="|window.location.href='/menu'|" class="logo">Logo</button>
     <div class="center">
 
-        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">wishlists</button>
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">wishlists</button>
         <div class="btn-divider"></div>
-        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">reserved items</button>
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">reserved items</button>
 
     </div>
     <div class="dropdown">
-        <button class="dropbtn" th:text="usernaem">Dropdown</button>
+        <button class="dropbtn" th:text="${session.user.username}">Dropdown</button>
         <div class="dropdown-content">
-            <a th:href="@{/login}">Logout</a>
+            <a th:href="@{/logout}">Logout</a>
         </div>
     </div>
 </div>
