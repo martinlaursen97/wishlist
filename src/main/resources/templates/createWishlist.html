@@ -34,13 +34,13 @@
 </div>
 
 <div class="center">
-    <div class="container" style="border-radius: 5px; border: 2px solid #9befed">
+    <div class="container" style="border-radius: 5px; border: 2px solid #29d9dc">
         <form name="createWishlistVerify" action="/createWishlistVerify" method="POST">
             <div class="col">
                 <div class="col">
                     <div class="form-group">
                         <label for="name" class="control-label">name</label>
-                        <input type="text" name="name" maxlength="25" class="form-control" id="name" placeholder="give your wishlist a name..."/><br>
+                        <input type="text" name="name" style="margin-top: 10px" maxlength="25" class="form-control" id="name" placeholder="give your wishlist a name..."/><br>
                     </div>
                 </div>
                 <div class="col">
@@ -52,8 +52,8 @@
 
                 <div class="col">
                     <div class="form-group">
-                        <button name="post" type="submit" value="0" class="btn">create</button>
-                        <button type="button" th:onclick="|window.location.href='/wishlists'|" value="0" class="btn">back</button>
+                        <button style="margin-top: -25px" name="post" type="submit" value="0" class="btn">create</button>
+                        <button style="margin-top: -25px" type="button" th:onclick="|window.location.href='/wishlists'|" value="0" class="btn">back</button>
                     </div>
                 </div>
             </div>

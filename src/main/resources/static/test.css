@@ -44,6 +44,19 @@ body {
     display: flex;
 }
 
+.create-btn {
+    font-size: 16px;
+    color: white;
+    border: solid 3px white;
+    background-color: #29d9dc;
+    border-radius: 60px;
+    position: relative;
+    margin-top: -25px;
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+}
+
 .btn {
     font-size: 16px;
     color: white;
@@ -100,8 +113,6 @@ body {
     margin-bottom: 25px;
     text-align: center;
     width: 800px;
-
-    background-color: whitesmoke;
 
 }
 
@@ -179,32 +190,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Style the search field */
-form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-}
 
-/* Style the submit button */
-form.example button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #007ac1;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
-}
-
-form.example button:hover {
-    background: #02a9f4;
-}
 
 /* Clear floats */
 form.example::after {
@@ -216,25 +202,42 @@ form.example::after {
 .wishlist-object {
     clear:both;
     width: 800px;
+    background-color: #9befed;
+    border-radius: 30px;
 }
 
-.wishlist-name {
-
-    font-size:20px;
-    height: 30px;
-    width: 800px;
-    background-color: #9befed;
+.wishlist-object:hover {
+    background-color: #0c989b;
     color: white;
 }
 
-.wishlist-notes {
 
-    height: 70px;
+
+.wishlist-name {
+    font-size:20px;
+    height: 30px;
+    width: 800px;
+    background-color: #29d9dc;
+    color: white;
+}
+
+a, u {
+    text-decoration: none;
+}
+
+
+.wishlist-notes {
+    margin-top: 5px;
+    height: 120px;
     width: 600px;
     position: relative;
    left:100px;
 
 
+}
+
+.object-divider {
+    height: 25px;
 }
 
 .wishlist-options {

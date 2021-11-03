@@ -38,4 +38,12 @@ public class WishlistService {
     public List<Wishlist> getWishlists(long id) {
         return wishlistRepository.getWishlists(id);
     }
+
+    public void clearWishlistsById(long id) {
+        wishlistRepository.clearWishlistsById(id);
+    }
+
+    public Wishlist findWishlistById(long id) {
+        return wishlistRepository.findWishlistById(id);
+    }
 }

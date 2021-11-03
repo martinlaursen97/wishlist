@@ -1,11 +1,11 @@
 package com.wishlist.project.controllers;
 
+import com.wishlist.project.domain.models.Wishlist;
 import com.wishlist.project.domain.services.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
@@ -42,5 +42,24 @@ public class WishlistController {
         long id = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
         model.addAttribute("wishlists", wishlistService.getWishlists(id));
         return "wishlists";
+    }
+
+    @GetMapping("/clearWishlists")
+    public String clearWishlists() {
+        return "clearWishlists";
+    }
+
+    @RequestMapping("/clearConfirmed")
+    public String clearConfirmed(WebRequest request) {
+        long id = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
+        wishlistService.clearWishlistsById(id);
+        return "redirect:/wishlists";
+    }
+
+    @GetMapping("/wishlist")
+    public String inspectWishlist(@RequestParam(name="id") String id, Model model) {
+        Wishlist wishlist = wishlistService.findWishlistById(Long.parseLong(id));
+        model.addAttribute("wishlist", wishlist);
+        return "wishlist";
     }
 }

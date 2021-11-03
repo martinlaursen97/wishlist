@@ -1,5 +1,6 @@
 package com.wishlist.project.repositories;
 
+import com.wishlist.project.domain.models.User;
 import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
 
@@ -57,6 +58,41 @@ public class WishlistRepositoryImpl implements WishlistRepository {
 
         }
         return wishlists;
+    }
+
+    @Override
+    public void clearWishlistsById(long id) {
+        try {
+            String query = "DELETE FROM sql11448324.wishlist WHERE user_id = " + id;
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (Exception ignore) {
+
+        }
+    }
+
+    @Override
+    public Wishlist findWishlistById(long id) {
+        Wishlist wishlist = new Wishlist();
+
+        try {
+            String query = "SELECT * FROM sql11448324.wishlist WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            wishlist.setId(resultSet.getLong("wishlist_id"));
+            wishlist.setUserId(resultSet.getLong("user_id"));
+            wishlist.setName(resultSet.getString("name"));
+            wishlist.setNotes(resultSet.getString("notes"));
+            wishlist.setCode(resultSet.getString("code"));
+            wishlist.setDate(resultSet.getString("creation_date"));
+        } catch (SQLException ignore) {
+
+        }
+
+        return wishlist;
     }
 }
 

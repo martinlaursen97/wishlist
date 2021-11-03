@@ -20,9 +20,9 @@
     <button type="button" th:onclick="|window.location.href='/menu'|" class="logo">Logo</button>
     <div class="center">
 
-            <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">wishlists</button>
-            <div class="btn-divider"></div>
-            <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">reserved items</button>
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">wishlists</button>
+        <div class="btn-divider"></div>
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">reserved items</button>
 
     </div>
     <div class="dropdown">
@@ -35,24 +35,21 @@
 
 <div class="center">
     <div class="content-box">
+
         <div class="wish-btn-container">
-            <button class="add-wish-btn" th:onclick="|window.location.href='/createWishlist'|">create wishlist</button>
-            <button class="add-wish-btn" th:onclick="|window.location.href='/clearWishlists'|">clear wishlists</button>
+            <button class="add-wish-btn" th:onclick="|window.location.href='/createWishlist'|">add wish</button>
+            <button class="add-wish-btn" th:onclick="|window.location.href='/clearWishlists'|">remove wishlist</button>
         </div>
 
-        <tr th:each="wishlist: ${wishlists}">
-
-            <a type="button" style="text-decoration: none; color: black;" th:href="@{/wishlist(id=${wishlist.id})}" class="wishlist-object">
-                <div class="wishlist-notes">
-                    <b><td th:text="${wishlist.name}"></td></b>
-                    <br>
-                    <td th:text="${wishlist.notes}"></td>
-                </div>
-            </a>
-
-            <div class="object-divider"></div>
-
-        </tr>
+        <div class="container">
+            <td th:text="${wishlist.id}"></td>
+            <br>
+            <td th:text="${wishlist.name}"></td>
+            <br>
+            <td th:text="${wishlist.notes}"></td>
+            <br>
+            <td th:text="${wishlist.date}"></td>
+        </div>
 
     </div>
 

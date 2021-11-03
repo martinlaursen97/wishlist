@@ -10,4 +10,6 @@ public interface WishlistRepository {
 
     void createWishlist(Wishlist wishList);
     List<Wishlist> getWishlists(long id);
+    void clearWishlistsById(long id);
+    Wishlist findWishlistById(long id);
 }
