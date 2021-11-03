@@ -28,6 +28,11 @@ public class WishlistController {
         long id = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
         String name = request.getParameter("name");
         String notes = request.getParameter("notes");
+
+        if (name == null || name.length() == 0) {
+            return "createWishlist";
+        }
+
         wishlistService.createWishlist(id, name, notes);
         return "redirect:/wishlists";
     }
