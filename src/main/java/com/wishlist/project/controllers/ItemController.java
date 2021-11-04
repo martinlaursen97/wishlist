@@ -1,6 +1,5 @@
 package com.wishlist.project.controllers;
 
-import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

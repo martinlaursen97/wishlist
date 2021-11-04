@@ -39,7 +39,7 @@ public class ItemRepositoryImpl implements ItemRepository{
     public List<Item> getItems(long id) {
         List<Item> items = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11448324.item WHERE user_id = " + id + " ORDER BY item_id DESC";
+            String query = "SELECT * FROM sql11448324.item WHERE wishlist_id = " + id + " ORDER BY item_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -79,7 +79,7 @@ public class ItemRepositoryImpl implements ItemRepository{
         Item item = new Item();
 
         try {
-            String query = "SELECT * FROM sql11448324.item WHERE item_id = " + id;
+            String query = "SELECT * FROM sql11448324.item WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
