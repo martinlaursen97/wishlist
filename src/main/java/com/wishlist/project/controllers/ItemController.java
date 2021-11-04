@@ -28,12 +28,4 @@ public class ItemController {
 
         return "index";
     }
-    @GetMapping ("/reservedItems")
-    public String reservedItems(){
-
-
-        return reservedItems();
-
-        }
-
 }

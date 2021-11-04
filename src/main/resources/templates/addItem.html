@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+          rel="stylesheet">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
+
+
+</head>
+
+<body>
+<div class="btn-box">
+    <button type="button" th:onclick="|window.location.href='/menu'|" class="logo">Logo</button>
+    <div class="center">
+
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">wishlists</button>
+        <div class="btn-divider"></div>
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">reserved items</button>
+
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" th:text="${session.user.username}">Dropdown</button>
+        <div class="dropdown-content">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <div class="container" style="border-radius: 5px; border: 2px solid #29d9dc">
+        <form name="addItem" action="/addItemVerify" method="POST">
+            <div class="col">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name" class="control-label">name</label>
+                        <input type="text" name="name" style="margin-top: 10px" maxlength="25" class="form-control"
+                               id="name" placeholder="give your wishlist a name..."/><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="imageUrl" class="control-label">image url</label>
+                        <input type="text" name="imageUrl" style="margin-top: 10px" maxlength="25" class="form-control"
+                               id="imageUrl" placeholder="image url..."/><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="price" class="control-label">price</label>
+                        <input type="number" name="price" maxlength="50" class="form-control" id="price"
+                               placeholder="price..."/><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="location" class="control-label">location</label>
+                        <input type="text" name="location" maxlength="50" class="form-control" id="location"
+                               placeholder="location..."/><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="notes" class="control-label">notes</label>
+                        <input type="text" name="notes" maxlength="50" class="form-control" id="notes"
+                               placeholder="notes..."/><br>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <button style="margin-top: -25px" name="post" type="submit" value="0" class="btn">create
+                        </button>
+                        <button style="margin-top: -25px" type="button" th:onclick="|window.location.href='/wishlists'|"
+                                value="0" class="btn">back
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
