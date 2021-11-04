@@ -57,9 +57,11 @@ public class WishlistController {
     }
 
     @GetMapping("/wishlist")
-    public String inspectWishlist(@RequestParam(name="id") String id, Model model) {
+    public String inspectWishlist(@RequestParam(name="id") String id, Model model, WebRequest request) {
         Wishlist wishlist = wishlistService.findWishlistById(Long.parseLong(id));
         model.addAttribute("wishlist", wishlist);
+        long wishlistId = Long.parseLong(id);
+        request.setAttribute("wishlistId", wishlistId, WebRequest.SCOPE_SESSION);
         return "wishlist";
     }
 }

@@ -13,7 +13,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void createUser(User user) {
         try {
-            String query = "insert into sql11448324.user(username, password, email, phone, street, city, zip) values (?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into sql11448324.user(username, password, email, phone, street, city, zip, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
             preparedStatement = connection.prepareStatement(query);
@@ -24,6 +24,7 @@ public class UserRepositoryImpl implements UserRepository {
             preparedStatement.setString(5, user.getStreet());
             preparedStatement.setString(6, user.getCity());
             preparedStatement.setString(7, user.getZip());
+            preparedStatement.setString(8, user.getDate());
             preparedStatement.executeUpdate();
 
         } catch (Exception ignore) {
@@ -88,6 +89,7 @@ public class UserRepositoryImpl implements UserRepository {
             user.setStreet(resultSet.getString(6));
             user.setCity(resultSet.getString(7));
             user.setZip(resultSet.getString(8));
+            user.setDate(resultSet.getString(9));
         } catch (SQLException ignore) {
 
         }

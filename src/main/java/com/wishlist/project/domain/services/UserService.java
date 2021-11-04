@@ -6,6 +6,9 @@ import com.wishlist.project.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 public class UserService {
 
@@ -17,7 +20,11 @@ public class UserService {
     }
 
     public void createUser(String username, String password, String email, String phone, String street, String city, String zip) {
-        User user = new User(username, password, email, phone, street, city, zip);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date dateNow = new Date();
+        String dateStr = formatter.format(dateNow);
+
+        User user = new User(username, password, email, phone, street, city, zip, dateStr);
         userRepository.createUser(user);
     }
 

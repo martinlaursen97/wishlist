@@ -8,16 +8,18 @@ public class Item {
     private String location;
     private String notes;
     private boolean reserved = false;
+    private String date;
 
     public Item(String name, long wishListId, String imageUrl,
                 double price, String location,
-                String notes) {
+                String notes, String date) {
         this.name = name;
         this.wishListId = wishListId;
         this.imageUrl = imageUrl;
         this.price = price;
         this.location = location;
         this.notes = notes;
+        this.date = date;
     }
 
     public String getName() {
@@ -74,6 +76,14 @@ public class Item {
 
     public void setReserved(boolean reserved) {
         this.reserved = reserved;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override

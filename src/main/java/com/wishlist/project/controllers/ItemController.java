@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
@@ -49,7 +50,9 @@ public class ItemController {
         double price = Double.parseDouble(request.getParameter("price"));
         String location = request.getParameter("location");
         String notes = request.getParameter("notes");
-        itemService.createItem(name, 1l, imageUrl, price, location, notes);
-        return "wishlist";
+        long id = (long) request.getAttribute("wishlistId", WebRequest.SCOPE_SESSION);
+        itemService.createItem(name, id, imageUrl, price, location, notes);
+        request.removeAttribute("wishlistId", WebRequest.SCOPE_SESSION);
+        return "redirect:/wishlists";
     }
 }

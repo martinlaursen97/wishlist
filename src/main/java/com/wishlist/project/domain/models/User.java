@@ -9,11 +9,12 @@ public class User {
     private String street;
     private String city;
     private String zip;
+    private String date;
 
     public User(String username, String password,
                 String email, String phone,
                 String street, String city,
-                String zip) {
+                String zip, String date) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -21,6 +22,7 @@ public class User {
         this.street = street;
         this.city = city;
         this.zip = zip;
+        this.date = date;
     }
 
     public User() {
@@ -89,6 +91,14 @@ public class User {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
