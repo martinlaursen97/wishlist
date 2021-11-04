@@ -8,7 +8,7 @@
 .header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(Gift.jpg);
+    background-image: linear-gradient(rgba(0, 120, 121, 0.56), rgba(8, 17, 56, 0.63)), url(images/Gift.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -18,7 +18,7 @@
 .header2 {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(blue-background-aqua-texture-gradient-light-blur-blend-vector-id1132462892.png);
+    background-image: linear-gradient(rgba(72, 166, 164, 0.8), rgba(4, 9, 30, 0.36)), url(images/blue-background-aqua-texture-gradient-light-blur-blend-vector-id1132462892.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -27,7 +27,7 @@
 .header3 {
     min-height: 100vh;
     width: 100%;
-    background-image: url(blue-background-aqua-texture-gradient-light-blur-blend-vector-id1132462892.png);
+    background-image: url(images/blue-background-aqua-texture-gradient-light-blur-blend-vector-id1132462892.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -52,8 +52,10 @@ nav img {
 .nav-links ul li {
     list-style: none;
     display: inline-block;
-    padding: 8px 12px;
+    padding: 10px 30px;
     position: relative;
+    border-radius: 30px;
+    border: 2px solid white;
 }
 
 .nav-links ul li a {
@@ -62,14 +64,8 @@ nav img {
     font-size: 13px;
 }
 
-.nav-links ul li::after {
-    content: '';
-    width: 0%;
-    height: 2px;
-    background: #9befed;
-    display: block;
-    margin: auto;
-    transition: 0.5s;
+.nav-links ul li:hover {
+    background-color: black;
 
 }
 
@@ -277,7 +273,7 @@ h3{
 .cta{
     margin: 100px auto;
     width: 80%;
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("Design_uden_navn_1.png");
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("images/Design_uden_navn_1.png");
     background-position: center;
     background-size: cover;
     border-radius: 10px;
