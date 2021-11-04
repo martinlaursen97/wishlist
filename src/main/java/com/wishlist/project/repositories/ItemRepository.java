@@ -1,10 +1,16 @@
 package com.wishlist.project.repositories;
 
 import com.wishlist.project.domain.models.Item;
+import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ItemRepository {
     void createItem(Item item);
+    List<Item> getItems(long id);
+    void clearItemsById(long id);
+    Item findItemsById(long id);
 
 }

@@ -103,8 +103,8 @@ body {
 }
 
 .container {
+    text-align: left;
     margin-top: 25px;
-    text-align: center;
     width: 800px;
     background-color: whitesmoke;
 }

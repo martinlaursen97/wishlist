@@ -18,20 +18,6 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-    //LOL
-    @GetMapping("/createItem")
-    public String createItem() {
-        String name = "test";
-        long wishListId = 12345678;
-        String imageUrl = "url";
-        double price = 1.3;
-        String location = "Dk";
-        String notes = "fedt";
-        itemService.createItem(name, wishListId, imageUrl, price, location, notes);
-
-        return "index";
-    }
-
     @GetMapping("/reservedItems")
     public String reservedItems() {
         return "reservedItems";

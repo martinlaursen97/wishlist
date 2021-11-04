@@ -1,6 +1,8 @@
 package com.wishlist.project.domain.models;
 
 public class Item {
+
+    private long id;
     private String name;
     private long wishListId;
     private String imageUrl;
@@ -8,6 +10,7 @@ public class Item {
     private String location;
     private String notes;
     private boolean reserved = false;
+    private String date;
 
     public Item(String name, long wishListId, String imageUrl,
                 double price, String location,
@@ -18,6 +21,10 @@ public class Item {
         this.price = price;
         this.location = location;
         this.notes = notes;
+    }
+
+    public Item(){
+
     }
 
     public String getName() {
@@ -74,6 +81,22 @@ public class Item {
 
     public void setReserved(boolean reserved) {
         this.reserved = reserved;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
