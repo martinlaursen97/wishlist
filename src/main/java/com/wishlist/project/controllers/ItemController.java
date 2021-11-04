@@ -15,7 +15,7 @@ public class ItemController {
     public ItemController (ItemService itemService){
         this.itemService = itemService;
     }
-
+//LOL
     @GetMapping("/createItem")
     public String createItem(){
         String name = "test";
