@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 
@@ -25,6 +27,12 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
         return "login";
     }
 

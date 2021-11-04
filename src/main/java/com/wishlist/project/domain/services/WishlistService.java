@@ -30,6 +30,7 @@ public class WishlistService {
 
         String code = "123";
         Wishlist wishList = new Wishlist(id, name, notes, code, dateStr);
+        System.out.println(dateStr);
 
         System.out.println(id);
         wishlistRepository.createWishlist(wishList);

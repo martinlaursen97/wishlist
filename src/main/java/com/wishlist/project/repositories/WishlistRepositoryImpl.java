@@ -40,7 +40,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     public List<Wishlist> getWishlists(long id) {
         List<Wishlist> wishlists = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11448324.wishlist WHERE user_id = " + id;
+            String query = "SELECT * FROM sql11448324.wishlist WHERE user_id = " + id + " ORDER BY wishlist_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
