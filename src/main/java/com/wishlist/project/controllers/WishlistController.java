@@ -78,4 +78,16 @@ public class WishlistController {
         request.setAttribute("wishlistId", wishlistId, WebRequest.SCOPE_SESSION);
         return "wishlist";
     }
+
+    @GetMapping("/view")
+    public String wishlistShared(@RequestParam String code, Model model) {
+        Wishlist wishlist = wishlistService.findWishlistByCode(code);
+
+
+        model.addAttribute("wishlist", wishlist);
+        model.addAttribute("items", wishlistService.findItemsByWishlistId(wishlist.getId()));
+        model.addAttribute("name", wishlistService.getNameById(wishlist.getUserId()));
+        System.out.println(wishlist.getUserId());
+        return "wishlistShared";
+    }
 }

@@ -1,5 +1,6 @@
 package com.wishlist.project.repositories;
 
+import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,7 @@ public interface WishlistRepository {
     void clearWishlistsById(long id);
     Wishlist findWishlistById(long id);
     void clearWishlistById(long id);
+    Wishlist findWishlistByCode(String code);
+    List<Item> findItemsByWishlistId(long id);
+    String getNameById(long userId);
 }

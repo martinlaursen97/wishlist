@@ -1,5 +1,6 @@
 package com.wishlist.project.domain.services;
 
+import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.Wishlist;
 import com.wishlist.project.repositories.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,17 @@ public class WishlistService {
 
     public void clearWishlistById(long id) {
         wishlistRepository.clearWishlistById(id);
+    }
+
+    public Wishlist findWishlistByCode(String code) {
+        return wishlistRepository.findWishlistByCode(code);
+    }
+
+    public List<Item> findItemsByWishlistId(long id) {
+        return wishlistRepository.findItemsByWishlistId(id);
+    }
+
+    public String getNameById(long userId) {
+        return wishlistRepository.getNameById(userId);
     }
 }

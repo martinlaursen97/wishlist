@@ -13,7 +13,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void createUser(User user) {
         try {
-            String query = "insert into sql11448324.user(username, password, email, phone, street, city, zip, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into sql11449169.user(username, password, email, phone, street, city, zip, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
             preparedStatement = connection.prepareStatement(query);
@@ -37,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
         boolean valid = false;
 
         try {
-            String query = "SELECT * FROM sql11448324.user WHERE username = '" + username + "' AND password = " + password;
+            String query = "SELECT * FROM sql11449169.user WHERE username = '" + username + "' AND password = " + password;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -56,7 +56,7 @@ public class UserRepositoryImpl implements UserRepository {
         boolean valid = false;
 
         try {
-            String query = "SELECT * FROM sql11448324.user WHERE username = '" + username + "'";
+            String query = "SELECT * FROM sql11449169.user WHERE username = '" + username + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -76,7 +76,7 @@ public class UserRepositoryImpl implements UserRepository {
         User user = new User();
 
         try {
-            String query = "SELECT * FROM sql11448324.user WHERE username = '" + username + "'";
+            String query = "SELECT * FROM sql11449169.user WHERE username = '" + username + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();

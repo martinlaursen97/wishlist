@@ -1,5 +1,6 @@
 package com.wishlist.project.repositories;
 
+import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.User;
 import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
@@ -19,10 +20,9 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     @Override
     public void createWishlist(Wishlist wishlist) {
         try {
-            String query = "insert into sql11448324.wishlist(user_id,name,notes,code,creation_date) values (?, ?, ?, ?, ?)";
+            String query = "insert into sql11449169.wishlist(user_id,name,notes,code,creation_date) values (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
-            System.out.println(wishlist.getUserId());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, wishlist.getUserId());
             preparedStatement.setString(2, wishlist.getName());
@@ -40,7 +40,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     public List<Wishlist> getWishlists(long id) {
         List<Wishlist> wishlists = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11448324.wishlist WHERE user_id = " + id + " ORDER BY wishlist_id DESC";
+            String query = "SELECT * FROM sql11449169.wishlist WHERE user_id = " + id + " ORDER BY wishlist_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -63,7 +63,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     @Override
     public void clearWishlistsById(long id) {
         try {
-            String query = "DELETE FROM sql11448324.wishlist WHERE user_id = " + id;
+            String query = "DELETE FROM sql11449169.wishlist WHERE user_id = " + id;
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
@@ -77,7 +77,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
         Wishlist wishlist = new Wishlist();
 
         try {
-            String query = "SELECT * FROM sql11448324.wishlist WHERE wishlist_id = " + id;
+            String query = "SELECT * FROM sql11449169.wishlist WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -98,13 +98,81 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     @Override
     public void clearWishlistById(long id) {
         try {
-            String query = "DELETE FROM sql11448324.wishlist WHERE wishlist_id = " + id;
+            String query = "DELETE FROM sql11449169.wishlist WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
         } catch (Exception ignore) {
 
         }
+    }
+
+    @Override
+    public Wishlist findWishlistByCode(String code) {
+        Wishlist wishlist = new Wishlist();
+
+        try {
+            String query = "SELECT * FROM sql11449169.wishlist WHERE code = " + code;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            wishlist.setId(resultSet.getLong("wishlist_id"));
+            wishlist.setUserId(resultSet.getLong("user_id"));
+            wishlist.setName(resultSet.getString("name"));
+            wishlist.setNotes(resultSet.getString("notes"));
+            wishlist.setCode(resultSet.getString("code"));
+            wishlist.setDate(resultSet.getString("creation_date"));
+        } catch (SQLException ignore) {
+
+        }
+
+        return wishlist;
+    }
+
+    @Override
+    public List<Item> findItemsByWishlistId(long id) {
+        List<Item> items = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                Item item = new Item();
+                item.setId(resultSet.getLong("item_id"));
+                item.setName(resultSet.getString("name"));
+                item.setWishListId(resultSet.getLong("wishlist_id"));
+                item.setImageUrl(resultSet.getString("image_url"));
+                item.setPrice(resultSet.getDouble("price"));
+                item.setLocation(resultSet.getString("location"));
+                item.setNotes(resultSet.getString("notes"));
+                item.setReserved(resultSet.getBoolean("reserved"));
+                item.setDate(resultSet.getString("creation_date"));
+                items.add(item);
+            }
+        } catch (SQLException ignore) {
+
+        }
+        return items;
+    }
+
+    @Override
+    public String getNameById(long userId) {
+        String name = null;
+
+        try {
+            String query = "SELECT username FROM sql11449169.user WHERE user_id = " + userId;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            name = resultSet.getString("username");
+
+        } catch (SQLException ignore) {
+
+        }
+
+        return name;
     }
 }
 

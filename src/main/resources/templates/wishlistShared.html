@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+          rel="stylesheet">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
+
+</head>
+<body>
+<div class="btn-box">
+    <button type="button" th:onclick="|window.location.href='/index'|" class="logo">Logo</button>
+    <div class="center">
+
+        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">login</button>
+        <div class="btn-divider"></div>
+        <button type="button" class="btn" th:onclick="|window.location.href='/register'|">sign up</button>
+
+    </div>
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <div class="content-box">
+        <b>wishlist name</b>
+        <br>
+        <td th:text="${wishlist.name}"></td>
+
+
+        <br>
+        <b>username</b>
+        <br>
+        <td th:text="${name}"></td>
+
+        <br>
+        <b>items</b>
+        <br>
+
+        <tr th:each="item: ${items}">
+            <td th:text="${item.name}"></td>
+            <br>
+        </tr>
+    </div>
+</div>
+</body>
+</html>
