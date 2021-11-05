@@ -56,6 +56,20 @@ public class WishlistController {
         return "redirect:/wishlists";
     }
 
+    @GetMapping("/removeWishlist")
+    public String removeWishlist() {
+        return "removeWishlist";
+    }
+
+    @RequestMapping("/removeWishlistConfirmed")
+    public String removeWishlistConfirmed(WebRequest request) {
+        long id = (long) request.getAttribute("wishlistId", WebRequest.SCOPE_SESSION);
+        if (id != 0L) {
+            wishlistService.clearWishlistById(id);
+        }
+        return "redirect:/wishlists";
+    }
+
     @GetMapping("/wishlist")
     public String inspectWishlist(@RequestParam(name="id") String id, Model model, WebRequest request) {
         Wishlist wishlist = wishlistService.findWishlistById(Long.parseLong(id));

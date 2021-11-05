@@ -47,4 +47,8 @@ public class WishlistService {
     public Wishlist findWishlistById(long id) {
         return wishlistRepository.findWishlistById(id);
     }
+
+    public void clearWishlistById(long id) {
+        wishlistRepository.clearWishlistById(id);
+    }
 }

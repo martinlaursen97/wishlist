@@ -94,5 +94,17 @@ public class WishlistRepositoryImpl implements WishlistRepository {
 
         return wishlist;
     }
+
+    @Override
+    public void clearWishlistById(long id) {
+        try {
+            String query = "DELETE FROM sql11448324.wishlist WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (Exception ignore) {
+
+        }
+    }
 }
 
