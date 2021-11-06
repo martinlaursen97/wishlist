@@ -234,13 +234,17 @@ a, u {
     height: 120px;
     width: 600px;
     position: relative;
-   left:100px;
+    left:100px;
 
 
 }
 
 .object-divider {
     height: 25px;
+}
+
+.item-divider {
+    height: 50px;
 }
 
 .wishlist-options {
@@ -256,6 +260,10 @@ a, u {
     width: 600px;
     background-color: whitesmoke;
     height: 200px;
+    border-radius: 5px;
+    outline: 2px solid grey;
+    position: relative;
+
 }
 
 .item-object:hover {
@@ -266,29 +274,28 @@ a, u {
     float: left;
     height: 200px;
     width: 200px;
-    border: 1px solid red;
+    border-right: 2px solid grey;
 }
 
 .item-object-text {
     height: 200px;
     width: 400px;
     float:right;
-    border: 1px solid blue;
     align-content: center;
 }
 
 .item-object-name {
     height: 30px;
-    width: 300px;
+    width: 400px;
 }
 
 .item-object-notes {
     height: 140px;
-    width: 300px;
+    width: 400px;
 }
 
 .item-object-price {
     height: 30px;
-    width: 300px;
+    width: 400px;
     color: forestgreen;
 }

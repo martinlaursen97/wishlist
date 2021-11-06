@@ -82,7 +82,7 @@ public class WishlistController {
     @GetMapping("/view")
     public String wishlistShared(@RequestParam String code, Model model) {
         Wishlist wishlist = wishlistService.findWishlistByCode(code);
-
+        System.out.println(wishlist.toString());
 
         model.addAttribute("wishlist", wishlist);
         model.addAttribute("items", wishlistService.findItemsByWishlistId(wishlist.getId()));

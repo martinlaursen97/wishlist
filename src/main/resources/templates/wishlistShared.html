@@ -32,18 +32,18 @@
 <div class="center">
     <div class="content-box">
 
-        <b>wishlist name</b>
-        <br>
-        <td th:text="${wishlist.name}"></td>
+
+
 
 
         <br>
-        <b>username</b>
+        <td th:text="${name}"></td>'s wishlist
         <br>
-        <td th:text="${name}"></td>
+        "<td th:text="${wishlist.name}"></td>"
 
         <br>
-        <b>items</b>
+        <b>wishes:</b>
+        <br>
         <br>
 
         <tr th:each="item: ${items}">
@@ -63,6 +63,7 @@
                 </div>
 
             </a>
+            <div class="object-divider"></div>
         </tr>
 
 

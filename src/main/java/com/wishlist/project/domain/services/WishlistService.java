@@ -22,18 +22,13 @@ public class WishlistService {
 
 
     public void createWishlist(long id, String name, String notes) {
-        //String code = generateUniqueCode();
+        String code = wishlistRepository.generateCode();
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date dateNow = new Date();
-
         String dateStr = formatter.format(dateNow);
 
-        String code = "123";
         Wishlist wishList = new Wishlist(id, name, notes, code, dateStr);
-        System.out.println(dateStr);
-
-        System.out.println(id);
         wishlistRepository.createWishlist(wishList);
     }
 

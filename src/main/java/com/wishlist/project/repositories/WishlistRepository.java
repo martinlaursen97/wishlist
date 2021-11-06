@@ -17,4 +17,5 @@ public interface WishlistRepository {
     Wishlist findWishlistByCode(String code);
     List<Item> findItemsByWishlistId(long id);
     String getNameById(long userId);
+    String generateCode();
 }

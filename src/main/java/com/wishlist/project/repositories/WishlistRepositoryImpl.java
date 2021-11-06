@@ -109,10 +109,11 @@ public class WishlistRepositoryImpl implements WishlistRepository {
 
     @Override
     public Wishlist findWishlistByCode(String code) {
+        System.out.println(code);
         Wishlist wishlist = new Wishlist();
 
         try {
-            String query = "SELECT * FROM sql11449169.wishlist WHERE code = " + code;
+            String query = "SELECT * FROM sql11449169.wishlist WHERE code = '" + code  + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -173,6 +174,23 @@ public class WishlistRepositoryImpl implements WishlistRepository {
         }
 
         return name;
+    }
+
+    @Override
+    public String generateCode() {
+        String code = null;
+
+        try {
+            String query = "SELECT LEFT(UUID(), 8)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            code = resultSet.getString(1);
+
+        } catch (SQLException ignore) {
+
+        }
+        return code;
     }
 }
 
