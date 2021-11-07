@@ -4,6 +4,7 @@ import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,5 +55,14 @@ public class ItemController {
         itemService.createItem(name, id, imageUrl, price, location, notes);
         request.removeAttribute("wishlistId", WebRequest.SCOPE_SESSION);
         return "redirect:/wishlists";
+    }
+
+    @GetMapping("/reserve")
+    public String reserveItem(@RequestParam String id, @RequestParam String code, Model model, WebRequest request) {
+        if (request.getAttribute("user", WebRequest.SCOPE_SESSION) != null) {
+            return "reservedSuccess";
+        } else {
+            return "reservedNotLoggedIn";
+        }
     }
 }

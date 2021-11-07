@@ -14,15 +14,16 @@
 </head>
 <body>
 <div class="btn-box">
-    <button type="button" th:onclick="|window.location.href='/index'|" class="logo">Logo</button>
+    <button type="button" th:onclick="|window.location.href='/menu'|" class="logo">Logo</button>
     <div class="center">
 
-        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">login</button>
+        <button type="button" class="btn" th:onclick="|window.location.href='/wishlists'|">wishlists</button>
         <div class="btn-divider"></div>
-        <button type="button" class="btn" th:onclick="|window.location.href='/register'|">sign up</button>
+        <button type="button" class="btn" th:onclick="|window.location.href='/reservedItems'|">reserved items</button>
 
     </div>
     <div class="dropdown">
+        <button class="dropbtn" th:text="${session.user.username}">Dropdown</button>
         <div class="dropdown-content">
             <a th:href="@{/logout}">Logout</a>
         </div>
@@ -31,23 +32,16 @@
 
 <div class="center">
     <div class="content-box">
-
-
-
-
-
         <br>
         <td th:text="${name}"></td>'s wishlist
         <br>
         "<td th:text="${wishlist.name}"></td>"
-
         <br>
         <b>wishes:</b>
         <br>
         <br>
-
         <tr th:each="item: ${items}">
-            <a type="button" style="text-decoration: none; color: black;" th:href="@{/reserve(id=${item.id})}" class="item-object">
+            <a type="button" style="text-decoration: none; color: black;" th:href="@{/reserve(id=${item.id}, code=${wishlist.code})}" class="item-object">
                 <img th:src="${item.imageUrl}" class="item-object-img"/>
 
                 <div class="item-object-text">

@@ -80,14 +80,18 @@ public class WishlistController {
     }
 
     @GetMapping("/view")
-    public String wishlistShared(@RequestParam String code, Model model) {
+    public String wishlistShared(@RequestParam String code, Model model, WebRequest request) {
         Wishlist wishlist = wishlistService.findWishlistByCode(code);
-        System.out.println(wishlist.toString());
-
         model.addAttribute("wishlist", wishlist);
         model.addAttribute("items", wishlistService.findItemsByWishlistId(wishlist.getId()));
         model.addAttribute("name", wishlistService.getNameById(wishlist.getUserId()));
-        System.out.println(wishlist.getUserId());
-        return "wishlistShared";
+
+        if (request.getAttribute("user", WebRequest.SCOPE_SESSION) != null) {
+            return "wishlistSharedInSession";
+        } else {
+            return "wishlistSharedNotSession";
+        }
     }
+
+
 }

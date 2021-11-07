@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+          rel="stylesheet">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
+
+</head>
+<body>
+<div class="btn-box">
+    <button type="button" th:onclick="|window.location.href='/index'|" class="logo">Logo</button>
+    <div class="center">
+
+        <button type="button" class="btn" th:onclick="|window.location.href='/login'|">login</button>
+        <div class="btn-divider"></div>
+        <button type="button" class="btn" th:onclick="|window.location.href='/register'|">sign up</button>
+
+    </div>
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <div class="content-box">
+
+
+
+
+
+        <br>
+        <td th:text="${name}"></td>'s wishlist
+        <br>
+        "<td th:text="${wishlist.name}"></td>"
+
+        <br>
+        <b>wishes:</b>
+        <br>
+        <br>
+
+        <tr th:each="item: ${items}">
+            <a type="button" style="text-decoration: none; color: black;" th:href="@{/reserve(id=${item.id}, code=${wishlist.code})}" class="item-object">
+                <img th:src="${item.imageUrl}" class="item-object-img"/>
+
+                <div class="item-object-text">
+                    <div class="item-object-name">
+                        <b><td th:text="${item.name}"></td></b>
+                    </div>
+                    <div class="item-object-notes">
+                        <td th:text="${item.notes}"></td>
+                    </div>
+                    <div class="item-object-price">
+                        <b><td th:text="${item.price}"></td></b>
+                    </div>
+                </div>
+
+            </a>
+            <div class="object-divider"></div>
+        </tr>
+
+
+    </div>
+</div>
+</body>
+</html>
