@@ -33,9 +33,16 @@
 <div class="center">
     <div class="content-box">
         <br>
-        <td th:text="${name}"></td>'s wishlist
+        <b><td th:text="${name}"></td></b>'s wishlist
         <br>
-        "<td th:text="${wishlist.name}"></td>"
+        <b>"<td th:text="${wishlist.name}"></td></b>"
+        <br>
+        There are
+        <b><td th:text="${size}"></td></b> wishes in this wishlist.
+        <br>
+        Reserved wishes will not show up in this list.
+        <br>
+        To reserve a wish, click on it!
         <br>
         <b>wishes:</b>
         <br>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ItemService {
@@ -32,6 +33,10 @@ public class ItemService {
 
     public void reserveItemById(long id) {
         itemRepository.reserveItemById(id);
+    }
+
+    public List<Item> getReservedItemsById(long id) {
+        return itemRepository.getReservedItemsById(id);
     }
 }
 

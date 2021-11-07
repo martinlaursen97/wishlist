@@ -52,11 +52,15 @@ public class WishlistService {
         return wishlistRepository.findWishlistByCode(code);
     }
 
-    public List<Item> findItemsByWishlistId(long id) {
-        return wishlistRepository.findItemsByWishlistId(id);
-    }
-
     public String getNameById(long userId) {
         return wishlistRepository.getNameById(userId);
+    }
+
+    public List<Item> findNotReservedItemsById(long id) {
+        return wishlistRepository.findNotReservedItemsById(id);
+    }
+
+    public int getWishlistSizeById(long id) {
+        return wishlistRepository.getWishlistSizeById(id);
     }
 }

@@ -29,5 +29,36 @@
     </div>
   </div>
 </div>
+
+<div class="center">
+  <div class="content-box">
+
+    <b>reserved items:</b>
+    <br>
+    <br>
+    <tr th:each="item: ${items}">
+      <a type="button" style="text-decoration: none; color: black;" th:href="@{/unReserve(id=${item.id})}" class="item-object">
+        <img th:src="${item.imageUrl}" class="item-object-img"/>
+
+        <div class="item-object-text">
+          <div class="item-object-name">
+            <b><td th:text="${item.name}"></td></b>
+          </div>
+          <div class="item-object-notes">
+            <td th:text="${item.notes}"></td>
+          </div>
+          <div class="item-object-price">
+            <b><td th:text="${item.price}"></td></b>
+          </div>
+        </div>
+
+      </a>
+      <div class="object-divider"></div>
+    </tr>
+
+
+  </div>
+</div>
+
 </body>
 </html>

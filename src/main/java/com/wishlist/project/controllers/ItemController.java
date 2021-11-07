@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.List;
+
 @Controller
 public class ItemController {
 
@@ -35,7 +37,10 @@ public class ItemController {
     }
 
     @GetMapping("/reservedItems")
-    public String reservedItems() {
+    public String reservedItems(Model model, WebRequest request) {
+        long id = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
+        List<Item> reservedItems = itemService.getReservedItemsById(id);
+        model.addAttribute("items", reservedItems);
         return "reservedItems";
     }
 

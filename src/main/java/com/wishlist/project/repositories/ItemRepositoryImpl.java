@@ -5,6 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ItemRepositoryImpl implements ItemRepository{
@@ -43,5 +47,35 @@ public class ItemRepositoryImpl implements ItemRepository{
         } catch (Exception ignore) {
 
         }
+    }
+
+    @Override
+    public List<Item> getReservedItemsById(long id) {
+        List<Item> items = new ArrayList<>();
+        try {
+            String query = "SELECT i.item_id, i.name, i.wishlist_id, i.image_url, i.price, i.location, i.notes, i.reserved, i.creation_date" +
+                    " FROM sql11449169.item i JOIN sql11449169.wishlist w ON w.wishlist_id = i.wishlist_id WHERE user_id = " + id + " AND " +
+                    "i.reserved = true";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                Item item = new Item();
+                item.setId(resultSet.getLong("item_id"));
+                item.setName(resultSet.getString("name"));
+                item.setWishListId(resultSet.getLong("wishlist_id"));
+                item.setImageUrl(resultSet.getString("image_url"));
+                item.setPrice(resultSet.getDouble("price"));
+                item.setLocation(resultSet.getString("location"));
+                item.setNotes(resultSet.getString("notes"));
+                item.setReserved(resultSet.getBoolean("reserved"));
+                item.setDate(resultSet.getString("creation_date"));
+                items.add(item);
+            }
+        } catch (SQLException ignore) {
+
+        }
+        return items;
     }
 }

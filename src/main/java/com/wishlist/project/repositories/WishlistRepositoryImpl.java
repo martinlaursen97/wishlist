@@ -109,7 +109,6 @@ public class WishlistRepositoryImpl implements WishlistRepository {
 
     @Override
     public Wishlist findWishlistByCode(String code) {
-        System.out.println(code);
         Wishlist wishlist = new Wishlist();
 
         try {
@@ -132,10 +131,10 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     }
 
     @Override
-    public List<Item> findItemsByWishlistId(long id) {
+    public List<Item> findNotReservedItemsById(long id) {
         List<Item> items = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id;
+            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id + " AND reserved = false";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -156,6 +155,25 @@ public class WishlistRepositoryImpl implements WishlistRepository {
 
         }
         return items;
+    }
+
+
+
+    @Override
+    public int getWishlistSizeById(long id) {
+        int size = 0;
+
+        try {
+            String query = "SELECT count(*) FROM sql11449169.item WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            size = resultSet.getInt(1);
+
+        } catch (SQLException ignore) {
+
+        }
+        return size;
     }
 
     @Override
