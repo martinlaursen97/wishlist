@@ -22,20 +22,6 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-    //LOL
-    @GetMapping("/createItem")
-    public String createItem() {
-        String name = "test";
-        long wishListId = 12345678;
-        String imageUrl = "url";
-        double price = 1.3;
-        String location = "Dk";
-        String notes = "fedt";
-        itemService.createItem(name, wishListId, imageUrl, price, location, notes);
-
-        return "index";
-    }
-
     @GetMapping("/reservedItems")
     public String reservedItems(Model model, WebRequest request) {
         long id = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
@@ -57,6 +43,7 @@ public class ItemController {
         String location = request.getParameter("location");
         String notes = request.getParameter("notes");
         long id = (long) request.getAttribute("wishlistId", WebRequest.SCOPE_SESSION);
+
         itemService.createItem(name, id, imageUrl, price, location, notes);
         request.removeAttribute("wishlistId", WebRequest.SCOPE_SESSION);
         return "redirect:/wishlists";
@@ -70,5 +57,11 @@ public class ItemController {
         } else {
             return "reservedNotLoggedIn";
         }
+    }
+
+    @GetMapping("/unReserve")
+    public String unReserveItem(@RequestParam String id, WebRequest request) {
+        //itemService.unReserveItemById(Long.parseLong(id));
+        return "unReserveSuccess";
     }
 }
