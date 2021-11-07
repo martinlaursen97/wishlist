@@ -32,4 +32,16 @@ public class ItemRepositoryImpl implements ItemRepository{
 
         }
     }
+
+    @Override
+    public void reserveItemById(long id) {
+        try {
+            String query = "UPDATE sql11449169.item SET reserved = true WHERE item_id = " + id;
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (Exception ignore) {
+
+        }
+    }
 }

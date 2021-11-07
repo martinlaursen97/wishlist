@@ -30,6 +30,9 @@ public class ItemService {
     }
 
 
+    public void reserveItemById(long id) {
+        itemRepository.reserveItemById(id);
+    }
 }
 
 

@@ -58,8 +58,9 @@ public class ItemController {
     }
 
     @GetMapping("/reserve")
-    public String reserveItem(@RequestParam String id, @RequestParam String code, Model model, WebRequest request) {
+    public String reserveItem(@RequestParam String id, WebRequest request) {
         if (request.getAttribute("user", WebRequest.SCOPE_SESSION) != null) {
+            itemService.reserveItemById(Long.parseLong(id));
             return "reservedSuccess";
         } else {
             return "reservedNotLoggedIn";

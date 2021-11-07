@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ItemRepository {
     void createItem(Item item);
-
+    void reserveItemById(long id);
 }

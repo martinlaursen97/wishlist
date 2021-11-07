@@ -47,7 +47,7 @@
         <br>
 
         <tr th:each="item: ${items}">
-            <a type="button" style="text-decoration: none; color: black;" th:href="@{/reserve(id=${item.id}, code=${wishlist.code})}" class="item-object">
+            <a type="button" style="text-decoration: none; color: black;" th:href="@{/reserve(id=${item.id})}" class="item-object">
                 <img th:src="${item.imageUrl}" class="item-object-img"/>
 
                 <div class="item-object-text">
