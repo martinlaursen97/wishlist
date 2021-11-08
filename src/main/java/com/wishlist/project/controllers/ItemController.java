@@ -43,7 +43,7 @@ public class ItemController {
         String location = request.getParameter("location");
         String notes = request.getParameter("notes");
         long id = (long) request.getAttribute("wishlistId", WebRequest.SCOPE_SESSION);
-
+    //s
         itemService.createItem(name, id, imageUrl, price, location, notes);
         request.removeAttribute("wishlistId", WebRequest.SCOPE_SESSION);
         return "redirect:/wishlists";
