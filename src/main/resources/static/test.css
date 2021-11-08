@@ -266,17 +266,14 @@ form.example::after {
 }
 
 .wishlist-object {
-    clear:both;
-    width: 800px;
-    background-color: #9befed;
-    border-radius: 30px;
+
+
 }
 
 
 
 .wishlist-object:hover {
-    background-color: #0c989b;
-    color: white;
+    background-color: grey;
 }
 
 
@@ -284,7 +281,7 @@ form.example::after {
 .wishlist-name {
     font-size:20px;
     height: 30px;
-    width: 800px;
+    width: 600px;
     background-color: #29d9dc;
     color: white;
 }
@@ -296,13 +293,9 @@ a, u {
 
 
 .wishlist-notes {
-    margin-top: 5px;
-    height: 120px;
+    height: 170px;
     width: 600px;
     position: relative;
-    left:100px;
-
-
 }
 
 .object-divider {

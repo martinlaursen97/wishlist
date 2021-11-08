@@ -40,18 +40,20 @@
             <button class="add-wish-btn" th:onclick="|window.location.href='/clearWishlists'|">clear wishlists</button>
         </div>
 
+        <h3>Reserved items</h3>
+        <br>
         <tr th:each="wishlist: ${wishlists}">
-
-            <a type="button" style="text-decoration: none; color: black;" th:href="@{/wishlist(id=${wishlist.id})}" class="wishlist-object">
-                <div class="wishlist-notes">
-                    <b><td th:text="${wishlist.name}"></td></b>
-                    <br>
-                    <td th:text="${wishlist.notes}"></td>
+            <a type="button" style="text-decoration: none; color: black;" th:href="@{/wishlist(id=${wishlist.id})}" class="item-object">
+                <div class="wishlist-object">
+                    <div class="wishlist-name">
+                        <b><td th:text="${wishlist.name}"></td></b>
+                    </div>
+                    <div class="wishlist-notes">
+                        <td th:text="${wishlist.notes}"></td>
+                    </div>
                 </div>
             </a>
-
             <div class="object-divider"></div>
-
         </tr>
 
     </div>
