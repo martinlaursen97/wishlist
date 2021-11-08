@@ -73,8 +73,7 @@ public class WishlistController {
         return "redirect:/wishlists";
     }
 
-    @GetMapping("/wishlist")
-    public String inspectWishlist(@RequestParam(name="id") String id, Model model, WebRequest request) {
+    @GetMapping("/wishlist") public String inspectWishlist(@RequestParam(name="id") String id, Model model, WebRequest request) {
         Wishlist wishlist = wishlistService.findWishlistById(Long.parseLong(id));
         model.addAttribute("wishlist", wishlist);
         long wishlistId = Long.parseLong(id);
