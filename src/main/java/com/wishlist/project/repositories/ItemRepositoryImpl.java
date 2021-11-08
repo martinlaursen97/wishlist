@@ -1,6 +1,7 @@
 package com.wishlist.project.repositories;
 
 import com.wishlist.project.domain.models.Item;
+import com.wishlist.project.domain.models.User;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -81,7 +82,7 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public Item getItemById(long id) {
-        Item item = null;
+        Item item = new Item();
         try {
             String query = "SELECT * FROM sql11449169.item WHERE item_id = " + id;
 
@@ -109,22 +110,40 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public String getUsernameByItemId(long id) {
-        String name = "";
+    public User getUserByItemId(long id) {
+        User user = new User();
         try {
-            String query = "SELECT * FROM sql11449169.item WHERE item_id = " + id;
-
+            String query = "SELECT * FROM sql11449169.user u WHERE u.user_id = (SELECT user_id FROM sql11449169.wishlist w " +
+                    "JOIN sql11449169.item i ON w.wishlist_id = i.wishlist_id WHERE i.item_id = 1);";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             resultSet.next();
 
-            name = resultSet.getString(1);
-
-
+            user.setId(resultSet.getLong(1));
+            user.setUsername(resultSet.getString(2));
+            user.setPassword(resultSet.getString(3));
+            user.setEmail(resultSet.getString(4));
+            user.setPhone(resultSet.getString(5));
+            user.setStreet(resultSet.getString(6));
+            user.setCity(resultSet.getString(7));
+            user.setZip(resultSet.getString(8));
+            user.setDate(resultSet.getString(9));
         } catch (SQLException ignore) {
 
         }
-        return name;
+
+        return user;
+    }
+
+    @Override
+    public void unreserveItemById(long id) {
+        try {
+            String query = "UPDATE sql11449169.item SET reserved = false WHERE item_id = " + id;
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (Exception ignore) {
+
+        }
     }
 }

@@ -43,8 +43,12 @@ public class ItemService {
         return itemRepository.getItemById(id);
     }
 
-    public String getUsernameByItemId(long id) {
-        return itemRepository.getUsernameByItemId(id);
+    public User getUserByItemId(long id) {
+        return itemRepository.getUserByItemId(id);
+    }
+
+    public void unreserveItemById(long id) {
+        itemRepository.unreserveItemById(id);
     }
 }
 

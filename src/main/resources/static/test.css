@@ -70,6 +70,19 @@ body {
     cursor: pointer;
 }
 
+.reserved-object-inspect {
+    margin-top: 100px;
+    width: 400px;
+    border-radius: 5px;
+    border: 2px solid #29d9dc;
+    margin-left: 200px;
+}
+
+.reserved-object-inspect-text {
+    width: 400px;
+    margin: 5px;
+}
+
 .btn-index {
     font-size: 16px;
     color: white;
@@ -153,6 +166,24 @@ body {
     width: 200px;
     font-size: 20px;
     border: none;
+}
+
+.remove-res-btn {
+    height: 50px;
+    border-radius: 10px;
+    width: 300px;
+    border: 3px solid grey;
+    display: inline;
+    background-color: #29d9dc;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    margin:25px;
+}
+
+.remove-res-btn:hover {
+    background-color: #0c989b;
+    color:white;
 }
 
 .add-wish-btn {

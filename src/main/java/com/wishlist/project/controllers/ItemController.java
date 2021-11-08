@@ -43,7 +43,7 @@ public class ItemController {
         String location = request.getParameter("location");
         String notes = request.getParameter("notes");
         long id = (long) request.getAttribute("wishlistId", WebRequest.SCOPE_SESSION);
-    //s
+
         itemService.createItem(name, id, imageUrl, price, location, notes);
         request.removeAttribute("wishlistId", WebRequest.SCOPE_SESSION);
         return "redirect:/wishlists";
@@ -59,16 +59,16 @@ public class ItemController {
         }
     }
 
-    @GetMapping("/unReserve")
-    public String unReserveItem(@RequestParam String id, WebRequest request) {
-        //itemService.unReserveItemById(Long.parseLong(id));
-        return "unReserveSuccess";
+    @GetMapping("/unreserve")
+    public String unReserveItem(@RequestParam String id) {
+        itemService.unreserveItemById(Long.parseLong(id));
+        return "unreservedSuccess";
     }
 
     @GetMapping("inspectItem")
-    public String inspectItem(@RequestParam String id, WebRequest request, Model model) {
+    public String inspectItem(@RequestParam String id, Model model) {
         model.addAttribute("item", itemService.getItemById(Long.parseLong(id)));
-        model.addAttribute("recipient", itemService.getUsernameByItemId(Long.parseLong(id)));
-        return "item";
+        model.addAttribute("recipient", itemService.getUserByItemId(Long.parseLong(id)));
+        return "inspectItem";
     }
 }
