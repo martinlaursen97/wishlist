@@ -63,4 +63,8 @@ public class WishlistService {
     public int getWishlistSizeById(long id) {
         return wishlistRepository.getWishlistSizeById(id);
     }
+
+    public List<Item> getItemsByWishlistId(long id) {
+        return wishlistRepository.getItemsByWishlistId(id);
+    }
 }

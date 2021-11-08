@@ -36,27 +36,41 @@
 <div class="center">
     <div class="content-box">
 
-        <div class="wish-btn-container">
+        <div class="wish-btn-container" >
             <button class="add-wish-btn" th:onclick="|window.location.href='/addItem'|">add wish</button>
             <button class="add-wish-btn" th:onclick="|window.location.href='/removeWishlist'|">remove wishlist</button>
         </div>
 
-        <div class="container">
-            <td th:text="${wishlist.id}"></td>
+        <div class="wishlist-container">
+            Id: <td th:text="${wishlist.id}"></td>
             <br>
-            <td th:text="${wishlist.name}"></td>
+            Name: <td th:text="${wishlist.name}"></td>
             <br>
-            <td th:text="${wishlist.notes}"></td>
+            Notes: <td th:text="${wishlist.notes}"></td>
             <br>
-            <td th:text="${wishlist.date}"></td>
-            <br>
-            <td th:text="${wishlist.code}"></td>
+            Code: <td th:text="${wishlist.code}"></td>
         </div>
+        <div class ="object-divider"></div>
+        <tr th:each="item: ${items}">
+            <div style="text-decoration: none; color: black" class="item-object-inspect">
+                <img th:src="${item.imageUrl}" class="item-object-img"/>
 
+                <div class="item-object-text-inspect" id="decenter">
+                    <b>Name: </b><td th:text="${item.name}"></td>
+                    <div class="object-divider"></div>
+                    <b>Notes: </b><td th:text="${item.notes}"></td>
+                    <div class="object-divider"></div>
+                    <b>Located: </b><td th:text="${item.location}"></td>
+                    <div class="object-divider"></div>
+                    <b>Price: </b><b><td th:text="${item.price}"></td></b>
+                </div>
+
+            </div>
+            <div class="object-divider"></div>
+        </tr>
     </div>
 
+
 </div>
-
-
 </body>
 </html>

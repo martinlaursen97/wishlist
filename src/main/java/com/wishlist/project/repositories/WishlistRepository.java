@@ -19,4 +19,6 @@ public interface WishlistRepository {
     String generateCode();
     List<Item> findNotReservedItemsById(long id);
     int getWishlistSizeById(long id);
+
+    List<Item> getItemsByWishlistId(long id);
 }

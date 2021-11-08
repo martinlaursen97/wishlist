@@ -177,6 +177,33 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     }
 
     @Override
+    public List<Item> getItemsByWishlistId(long id) {
+        List<Item> items = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                Item item = new Item();
+                item.setId(resultSet.getLong("item_id"));
+                item.setName(resultSet.getString("name"));
+                item.setWishListId(resultSet.getLong("wishlist_id"));
+                item.setImageUrl(resultSet.getString("image_url"));
+                item.setPrice(resultSet.getDouble("price"));
+                item.setLocation(resultSet.getString("location"));
+                item.setNotes(resultSet.getString("notes"));
+                item.setReserved(resultSet.getBoolean("reserved"));
+                item.setDate(resultSet.getString("creation_date"));
+                items.add(item);
+            }
+        } catch (SQLException ignore) {
+
+        }
+        return items;
+    }
+
+    @Override
     public String getNameById(long userId) {
         String name = null;
 

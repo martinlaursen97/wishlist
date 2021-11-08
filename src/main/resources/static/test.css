@@ -137,11 +137,18 @@ body {
     background-color: whitesmoke;
 }
 
+.wishlist-container {
+    margin-top: 100px;
+    text-align: center;
+    width: 800px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: 2px solid #29d9dc
+}
 .content-box {
     margin-bottom: 25px;
     text-align: center;
     width: 800px;
-
 }
 
 
@@ -291,7 +298,16 @@ a, u {
     border-radius: 5px;
     outline: 2px solid grey;
     position: relative;
+}
 
+.item-object-inspect {
+    clear:both;
+    width: 800px;
+    background-color: whitesmoke;
+    height: 200px;
+    border-radius: 5px;
+    outline: 2px solid grey;
+    position: center;
 }
 
 .item-object:hover {
@@ -312,23 +328,51 @@ a, u {
     align-content: center;
 }
 
+.item-object-text-inspect {
+    height: 200px;
+    width: 600px;
+    float:right;
+    align-content: center;
+}
+
 .item-object-name {
     height: 30px;
     width: 400px;
+}
+
+.item-object-name-inspect {
+    height: 30px;
+    width: 600px;
+    text-align: left;
 }
 
 .item-object-notes {
     height: 90px;
     width: 400px;
 }
+.item-object-notes-inspect {
+    height: 90px;
+    width: 600px;
+    text-align: left;
+}
 
 .item-object-location {
     height: 50px;
     width: 400px;
 }
-
+.item-object-location-inspect {
+    height: 50px;
+    width: 600px;
+    text-align: left;
+}
 .item-object-price {
     height: 30px;
     width: 400px;
     color: forestgreen;
+}
+.item-object-price-inspect {
+    height: 30px;
+    width: 600px;
+    color: forestgreen;
+    text-align: left;
 }
