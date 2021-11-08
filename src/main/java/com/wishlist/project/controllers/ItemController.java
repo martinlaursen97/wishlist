@@ -46,7 +46,7 @@ public class ItemController {
 
         itemService.createItem(name, id, imageUrl, price, location, notes);
         request.removeAttribute("wishlistId", WebRequest.SCOPE_SESSION);
-        return "redirect:/wishlists";
+        return "redirect:/wishlist?id=" + id;
     }
 
     @GetMapping("/reserve")
