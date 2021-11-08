@@ -327,13 +327,23 @@ h3{
     color: white;
 }
 
+.square-login {
+    border: 2px solid white;
+    margin-top: 300px;
+    width: 500px;
+    height: 275px;
+    border-radius: 5px;
+    color: white;
+}
+
 .square-register {
     border: 2px solid white;
     margin-top: 50px;
     width: 500px;
-    height: 850px;
+    height: 900px;
     border-radius: 5px;
     color: white;
+    margin-bottom: 50px;
 }
 
 .btn {

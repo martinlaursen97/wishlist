@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="test.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,14 +15,14 @@
           rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+
 </head>
 
 <body style="background-color: #0c989b">
 
 <section class="header2">
-<div class="btn-box"></div>
 <div class="center">
-    <div class="square">
+    <div class="square-login">
         <form name="loginVerify" action="/loginVerify" method="POST">
 
             <div class="col">
@@ -44,8 +45,8 @@
                     <div class="form-group">
                         <div class="nav-links" id="center" style="margin-top: -9px">
                             <ul>
-                                <li><button name="post" type="submit" value="0">log in</button></li>
-                                <li><button type="button" th:onclick="|window.location.href='/register'|">sign up</button></li>
+                                <button name="post" type="submit" value="0" class="btn-index">log in</button>
+                                <button type="button" th:onclick="|window.location.href='/register'|" class="btn-index">sign up</button>
                             </ul>
                         </div>
                     </div>

@@ -9,6 +9,7 @@
           rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
 <section class="header">
@@ -16,10 +17,8 @@
         <a href="#"><img src="images/Design_uden_navn_1.png"></a>
         <div class="nav-links" id="navLinks">
             <ul>
-
-                <li><a th:href="@{/register}">Sign up</a></li>
-                <li><a th:href="@{/login}">Log in</a></li>
-
+                <button th:onclick="|window.location.href='/register'|" class="btn-index">Sign up</button>
+                <button th:onclick="|window.location.href='/login'|" class="btn-index">Log in</button>
             </ul>
         </div>
     </nav>

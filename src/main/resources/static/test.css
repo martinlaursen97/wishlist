@@ -70,9 +70,37 @@ body {
     cursor: pointer;
 }
 
+.btn-index {
+    font-size: 16px;
+    color: white;
+    border: solid 3px white;
+    border-radius: 60px;
+    position: relative;
+    height: 50px;
+    width: 150px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.btn-register {
+    font-size: 16px;
+    color: white;
+    border: solid 3px white;
+    border-radius: 60px;
+    position: relative;
+    height: 50px;
+    width: 150px;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
 .btn:hover {
     background-color: #0c989b;
     color: whitesmoke;
+}
+
+.btn-index:hover {
+    background-color: #0a7b7c;
 }
 
 .btn-divider {

@@ -14,6 +14,7 @@
           rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="stylesheet" href="test.css">
 
 </head>
 
@@ -79,8 +80,8 @@
                         <div class="form-group">
                             <div class="nav-links" id="center" style="margin-top: -9px">
                                 <ul>
-                                    <li><button name="post" type="submit" value="0">create account</button></li>
-                                    <li><button type="button" th:onclick="|window.location.href='/login'|" >back</button></li>
+                                    <button name="post" type="submit" value="0" class="btn-index">create account</button>
+                                    <button type="button" th:onclick="|window.location.href='/login'|" class="btn-index">back</button>
                                 </ul>
                             </div>
                         </div>
