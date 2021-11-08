@@ -10,4 +10,6 @@ public interface ItemRepository {
     void createItem(Item item);
     void reserveItemById(long id);
     List<Item> getReservedItemsById(long id);
+    Item getItemById(long id);
+    String getUsernameByItemId(long id);
 }

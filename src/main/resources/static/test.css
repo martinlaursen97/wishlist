@@ -290,7 +290,12 @@ a, u {
 }
 
 .item-object-notes {
-    height: 140px;
+    height: 90px;
+    width: 400px;
+}
+
+.item-object-location {
+    height: 50px;
     width: 400px;
 }
 

@@ -64,4 +64,11 @@ public class ItemController {
         //itemService.unReserveItemById(Long.parseLong(id));
         return "unReserveSuccess";
     }
+
+    @GetMapping("inspectItem")
+    public String inspectItem(@RequestParam String id, WebRequest request, Model model) {
+        model.addAttribute("item", itemService.getItemById(Long.parseLong(id)));
+        model.addAttribute("recipient", itemService.getUsernameByItemId(Long.parseLong(id)));
+        return "item";
+    }
 }

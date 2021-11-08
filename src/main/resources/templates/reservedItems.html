@@ -37,7 +37,7 @@
     <br>
     <br>
     <tr th:each="item: ${items}">
-      <a type="button" style="text-decoration: none; color: black;" th:href="@{/unReserve(id=${item.id})}" class="item-object">
+      <a type="button" style="text-decoration: none; color: black;" th:href="@{/inspectItem(id=${item.id})}" class="item-object">
         <img th:src="${item.imageUrl}" class="item-object-img"/>
 
         <div class="item-object-text">
@@ -46,6 +46,9 @@
           </div>
           <div class="item-object-notes">
             <td th:text="${item.notes}"></td>
+          </div>
+          <div class="item-object-location">
+            <b>located:</b> <td th:text="${item.location}"></td>
           </div>
           <div class="item-object-price">
             <b><td th:text="${item.price}"></td></b>

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ItemRepositoryImpl implements ItemRepository{
+public class ItemRepositoryImpl implements ItemRepository {
 
     private final Connection connection = DBManager.getConnection();
 
@@ -77,5 +77,54 @@ public class ItemRepositoryImpl implements ItemRepository{
 
         }
         return items;
+    }
+
+    @Override
+    public Item getItemById(long id) {
+        Item item = null;
+        try {
+            String query = "SELECT * FROM sql11449169.item WHERE item_id = " + id;
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+
+
+            item.setId(resultSet.getLong("item_id"));
+            item.setName(resultSet.getString("name"));
+            item.setWishListId(resultSet.getLong("wishlist_id"));
+            item.setImageUrl(resultSet.getString("image_url"));
+            item.setPrice(resultSet.getDouble("price"));
+            item.setLocation(resultSet.getString("location"));
+            item.setNotes(resultSet.getString("notes"));
+            item.setReserved(resultSet.getBoolean("reserved"));
+            item.setDate(resultSet.getString("creation_date"));
+
+
+        } catch (SQLException ignore) {
+
+        }
+        return item;
+    }
+
+    @Override
+    public String getUsernameByItemId(long id) {
+        String name = "";
+        try {
+            String query = "SELECT * FROM sql11449169.item WHERE item_id = " + id;
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+
+            name = resultSet.getString(1);
+
+
+        } catch (SQLException ignore) {
+
+        }
+        return name;
     }
 }

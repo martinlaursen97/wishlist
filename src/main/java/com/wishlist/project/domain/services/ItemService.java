@@ -38,6 +38,14 @@ public class ItemService {
     public List<Item> getReservedItemsById(long id) {
         return itemRepository.getReservedItemsById(id);
     }
+
+    public Item getItemById(long id) {
+        return itemRepository.getItemById(id);
+    }
+
+    public String getUsernameByItemId(long id) {
+        return itemRepository.getUsernameByItemId(id);
+    }
 }
 
 
