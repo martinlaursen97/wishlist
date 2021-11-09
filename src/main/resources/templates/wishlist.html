@@ -55,14 +55,19 @@
             <div style="text-decoration: none; color: black" class="item-object-inspect">
                 <img th:src="${item.imageUrl}" class="item-object-img"/>
 
-                <div class="item-object-text-inspect" id="decenter">
-                    <b>Name: </b><td th:text="${item.name}"></td>
-                    <div class="object-divider"></div>
-                    <b>Notes: </b><td th:text="${item.notes}"></td>
-                    <div class="object-divider"></div>
-                    <b>Located: </b><td th:text="${item.location}"></td>
-                    <div class="object-divider"></div>
-                    <b>Price: </b><b><td th:text="${item.price}"></td></b>
+                <div class="item-object-text">
+                    <div class="item-object-name">
+                        <b>Name: </b><td th:text="${item.name}"></td>
+                    </div>
+                    <div class="item-object-notes">
+                        <b>Notes: </b><td th:text="${item.notes}"></td>
+                    </div>
+                    <div class="item-object-location">
+                        <b>Located: </b> <td th:text="${item.location}"></td>
+                    </div>
+                    <div class="item-object-price">
+                        <b>Price: </b><b><td th:text="${item.price}"></td></b>
+                    </div>
                 </div>
 
             </div>
