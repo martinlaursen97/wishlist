@@ -121,15 +121,10 @@ body {
 }
 
 .logo {
-    background-color: #9befed;
-    height: 30px;
-    width: 100px;
-    border: none;
-    cursor: pointer;
+    height: 90px;
+    width: auto;
     position: absolute;
-
-    left: 0;
-    top: 0;
+    margin: 5px;
 }
 
 .row {
