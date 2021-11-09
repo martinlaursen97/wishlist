@@ -1,5 +1,6 @@
 package com.wishlist.project.controllers;
 
+import com.wishlist.project.domain.dto.ItemUserDTO;
 import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +68,10 @@ public class ItemController {
 
     @GetMapping("inspectItem")
     public String inspectItem(@RequestParam String id, Model model) {
-        model.addAttribute("item", itemService.getItemById(Long.parseLong(id)));
-        model.addAttribute("recipient", itemService.getUserByItemId(Long.parseLong(id)));
+        ItemUserDTO itemInfo = itemService.getItemInfoById(Long.parseLong(id));
+
+        model.addAttribute("item", itemInfo.getItem());
+        model.addAttribute("recipient", itemInfo.getUser());
         return "inspectItem";
     }
 }

@@ -51,9 +51,6 @@ public class UserController {
         String city = request.getParameter("city");
         String zip = request.getParameter("zip");
 
-        System.out.println("here");
-        System.out.println(username);
-
         if (username == null ||
             password == null) {
             return "register";
@@ -61,7 +58,6 @@ public class UserController {
 
         if (!userService.usernameTaken(username)) {
             userService.createUser(username, password, email, phone, street, city, zip);
-            System.out.println("here2");
             return "login";
         }
 

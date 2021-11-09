@@ -15,10 +15,5 @@ public interface WishlistRepository {
     Wishlist findWishlistById(long id);
     void clearWishlistById(long id);
     Wishlist findWishlistByCode(String code);
-    String getNameById(long userId);
     String generateCode();
-    List<Item> findNotReservedItemsById(long id);
-    int getWishlistSizeById(long id);
-
-    List<Item> getItemsByWishlistId(long id);
 }

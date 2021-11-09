@@ -110,32 +110,6 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public User getUserByItemId(long id) {
-        User user = new User();
-        try {
-            String query = "SELECT * FROM sql11449169.user u WHERE u.user_id = (SELECT user_id FROM sql11449169.wishlist w " +
-                    "JOIN sql11449169.item i ON w.wishlist_id = i.wishlist_id WHERE i.item_id = 1);";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-
-            user.setId(resultSet.getLong(1));
-            user.setUsername(resultSet.getString(2));
-            user.setPassword(resultSet.getString(3));
-            user.setEmail(resultSet.getString(4));
-            user.setPhone(resultSet.getString(5));
-            user.setStreet(resultSet.getString(6));
-            user.setCity(resultSet.getString(7));
-            user.setZip(resultSet.getString(8));
-            user.setDate(resultSet.getString(9));
-        } catch (SQLException ignore) {
-
-        }
-
-        return user;
-    }
-
-    @Override
     public void unreserveItemById(long id) {
         try {
             String query = "UPDATE sql11449169.item SET reserved = false WHERE item_id = " + id;
@@ -145,5 +119,76 @@ public class ItemRepositoryImpl implements ItemRepository {
         } catch (Exception ignore) {
 
         }
+    }
+
+    @Override
+    public List<Item> findNotReservedItemsByWishlistId(long id) {
+        List<Item> items = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id + " AND reserved = false";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                Item item = new Item();
+                item.setId(resultSet.getLong("item_id"));
+                item.setName(resultSet.getString("name"));
+                item.setWishListId(resultSet.getLong("wishlist_id"));
+                item.setImageUrl(resultSet.getString("image_url"));
+                item.setPrice(resultSet.getDouble("price"));
+                item.setLocation(resultSet.getString("location"));
+                item.setNotes(resultSet.getString("notes"));
+                item.setReserved(resultSet.getBoolean("reserved"));
+                item.setDate(resultSet.getString("creation_date"));
+                items.add(item);
+            }
+        } catch (SQLException ignore) {
+
+        }
+        return items;
+    }
+
+    @Override
+    public List<Item> getItemsByWishlistId(long id) {
+        List<Item> items = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                Item item = new Item();
+                item.setId(resultSet.getLong("item_id"));
+                item.setName(resultSet.getString("name"));
+                item.setWishListId(resultSet.getLong("wishlist_id"));
+                item.setImageUrl(resultSet.getString("image_url"));
+                item.setPrice(resultSet.getDouble("price"));
+                item.setLocation(resultSet.getString("location"));
+                item.setNotes(resultSet.getString("notes"));
+                item.setReserved(resultSet.getBoolean("reserved"));
+                item.setDate(resultSet.getString("creation_date"));
+                items.add(item);
+            }
+        } catch (SQLException ignore) {
+
+        }
+        return items;
+    }
+
+    @Override
+    public int getWishlistSizeById(long id) {
+        int size = 0;
+
+        try {
+            String query = "SELECT count(*) FROM sql11449169.item WHERE wishlist_id = " + id;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            size = resultSet.getInt(1);
+
+        } catch (SQLException ignore) {
+
+        }
+        return size;
     }
 }

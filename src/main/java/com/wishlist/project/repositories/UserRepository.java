@@ -9,4 +9,6 @@ public interface UserRepository {
     boolean loginValid(String username, String password);
     boolean usernameTaken(String username);
     User findByUsername(String username);
+    String getNameById(long userId);
+    User getUserByItemId(long id);
 }
