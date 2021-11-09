@@ -1,6 +1,6 @@
 package com.wishlist.project.controllers;
 
-import com.wishlist.project.domain.dto.ItemUserDTO;
+import com.wishlist.project.dto.ItemUserDTO;
 import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;

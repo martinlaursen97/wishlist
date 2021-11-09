@@ -1,4 +1,4 @@
-package com.wishlist.project.domain.dto;
+package com.wishlist.project.dto;
 
 import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.User;

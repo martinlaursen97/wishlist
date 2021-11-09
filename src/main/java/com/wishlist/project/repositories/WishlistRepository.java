@@ -1,6 +1,5 @@
 package com.wishlist.project.repositories;
 
-import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
 

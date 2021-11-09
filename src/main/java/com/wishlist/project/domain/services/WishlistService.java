@@ -1,6 +1,6 @@
 package com.wishlist.project.domain.services;
 
-import com.wishlist.project.domain.dto.SharedDTO;
+import com.wishlist.project.dto.SharedDTO;
 import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.User;
 import com.wishlist.project.domain.models.Wishlist;

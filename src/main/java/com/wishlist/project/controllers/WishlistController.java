@@ -1,6 +1,6 @@
 package com.wishlist.project.controllers;
 
-import com.wishlist.project.domain.dto.SharedDTO;
+import com.wishlist.project.dto.SharedDTO;
 import com.wishlist.project.domain.models.Wishlist;
 import com.wishlist.project.domain.services.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;

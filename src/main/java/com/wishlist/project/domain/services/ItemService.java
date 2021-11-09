@@ -1,11 +1,10 @@
 package com.wishlist.project.domain.services;
 
-import com.wishlist.project.domain.dto.ItemUserDTO;
+import com.wishlist.project.dto.ItemUserDTO;
 import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.User;
 import com.wishlist.project.repositories.ItemRepository;
 import com.wishlist.project.repositories.UserRepository;
-import com.wishlist.project.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
