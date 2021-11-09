@@ -1,6 +1,6 @@
 package com.wishlist.project.controllers;
 
-import com.wishlist.project.domain.models.Item;
+import com.wishlist.project.domain.dto.SharedDTO;
 import com.wishlist.project.domain.models.Wishlist;
 import com.wishlist.project.domain.services.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-
-import java.util.List;
 
 @Controller
 public class WishlistController {
@@ -85,13 +83,12 @@ public class WishlistController {
 
     @GetMapping("/view")
     public String wishlistShared(@RequestParam String code, Model model, WebRequest request) {
-        Wishlist wishlist = wishlistService.findWishlistByCode(code);
-        int size = wishlistService.getWishlistSizeById(wishlist.getId());
+        SharedDTO wishlistInfo = wishlistService.getWishlistInfoByCode(code);
 
-        model.addAttribute("wishlist", wishlist);
-        model.addAttribute("items", wishlistService.findNotReservedItemsById(wishlist.getId()));
-        model.addAttribute("name", wishlistService.getNameById(wishlist.getUserId()));
-        model.addAttribute("size", size);
+        model.addAttribute("wishlist", wishlistInfo.getWishlist());
+        model.addAttribute("items", wishlistInfo.getItems());
+        model.addAttribute("recipient", wishlistInfo.getUser());
+        model.addAttribute("size", wishlistInfo.size());
 
         if (request.getAttribute("user", WebRequest.SCOPE_SESSION) != null) {
             return "wishlistSharedInSession";

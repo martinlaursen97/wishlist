@@ -40,7 +40,7 @@
             <button class="add-wish-btn" th:onclick="|window.location.href='/clearWishlists'|">clear wishlists</button>
         </div>
 
-        <h3>Reserved items</h3>
+        <h3>Your wishlists</h3>
         <br>
         <tr th:each="wishlist: ${wishlists}">
             <a type="button" style="text-decoration: none; color: black;" th:href="@{/wishlist(id=${wishlist.id})}" class="item-object">

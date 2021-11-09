@@ -1,7 +1,11 @@
 package com.wishlist.project.domain.services;
 
+import com.wishlist.project.domain.dto.SharedDTO;
 import com.wishlist.project.domain.models.Item;
+import com.wishlist.project.domain.models.User;
 import com.wishlist.project.domain.models.Wishlist;
+import com.wishlist.project.repositories.ItemRepository;
+import com.wishlist.project.repositories.UserRepository;
 import com.wishlist.project.repositories.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +18,15 @@ import java.util.List;
 public class WishlistService {
 
     private final WishlistRepository wishlistRepository;
+    private final UserRepository userRepository;
+    private final ItemRepository itemRepository;
 
     @Autowired
-    public WishlistService(WishlistRepository wishlistRepository) {
+    public WishlistService(WishlistRepository wishlistRepository, UserRepository userRepository, ItemRepository itemRepository) {
         this.wishlistRepository = wishlistRepository;
+        this.userRepository = userRepository;
+        this.itemRepository = itemRepository;
     }
-
-
     public void createWishlist(long id, String name, String notes) {
         String code = wishlistRepository.generateCode();
 
@@ -30,6 +36,15 @@ public class WishlistService {
 
         Wishlist wishList = new Wishlist(id, name, notes, code, dateStr);
         wishlistRepository.createWishlist(wishList);
+    }
+
+    public SharedDTO getWishlistInfoByCode(String code) {
+        Wishlist wishlist = findWishlistByCode(code);
+        long id = wishlist.getId();
+        User user = userRepository.findByUsername(getNameById(id));
+        List<Item> items = itemRepository.findNotReservedItemsByWishlistId(id);
+        int size = itemRepository.getWishlistSizeById(id);
+        return new SharedDTO(wishlist, user, items, size);
     }
 
     public List<Wishlist> getWishlists(long id) {
@@ -53,18 +68,10 @@ public class WishlistService {
     }
 
     public String getNameById(long userId) {
-        return wishlistRepository.getNameById(userId);
-    }
-
-    public List<Item> findNotReservedItemsById(long id) {
-        return wishlistRepository.findNotReservedItemsById(id);
-    }
-
-    public int getWishlistSizeById(long id) {
-        return wishlistRepository.getWishlistSizeById(id);
+        return userRepository.getNameById(userId);
     }
 
     public List<Item> getItemsByWishlistId(long id) {
-        return wishlistRepository.getItemsByWishlistId(id);
+        return itemRepository.getItemsByWishlistId(id);
     }
 }

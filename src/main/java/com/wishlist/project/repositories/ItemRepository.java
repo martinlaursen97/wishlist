@@ -12,6 +12,8 @@ public interface ItemRepository {
     void reserveItemById(long id);
     List<Item> getReservedItemsById(long id);
     Item getItemById(long id);
-    User getUserByItemId(long id);
     void unreserveItemById(long id);
+    List<Item> findNotReservedItemsByWishlistId(long id);
+    List<Item> getItemsByWishlistId(long id);
+    int getWishlistSizeById(long id);
 }

@@ -96,5 +96,49 @@ public class UserRepositoryImpl implements UserRepository {
 
         return user;
     }
+
+    @Override
+    public String getNameById(long userId) {
+        String name = null;
+
+        try {
+            String query = "SELECT username FROM sql11449169.user WHERE user_id = " + userId;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            name = resultSet.getString("username");
+
+        } catch (SQLException ignore) {
+
+        }
+
+        return name;
+    }
+
+    @Override
+    public User getUserByItemId(long id) {
+        User user = new User();
+        try {
+            String query = "SELECT * FROM sql11449169.user u WHERE u.user_id = (SELECT user_id FROM sql11449169.wishlist w " +
+                    "JOIN sql11449169.item i ON w.wishlist_id = i.wishlist_id WHERE i.item_id = 1);";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            user.setId(resultSet.getLong(1));
+            user.setUsername(resultSet.getString(2));
+            user.setPassword(resultSet.getString(3));
+            user.setEmail(resultSet.getString(4));
+            user.setPhone(resultSet.getString(5));
+            user.setStreet(resultSet.getString(6));
+            user.setCity(resultSet.getString(7));
+            user.setZip(resultSet.getString(8));
+            user.setDate(resultSet.getString(9));
+        } catch (SQLException ignore) {
+
+        }
+
+        return user;
+    }
 }
 

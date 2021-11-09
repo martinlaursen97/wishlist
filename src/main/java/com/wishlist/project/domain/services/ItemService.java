@@ -1,8 +1,10 @@
 package com.wishlist.project.domain.services;
 
+import com.wishlist.project.domain.dto.ItemUserDTO;
 import com.wishlist.project.domain.models.Item;
 import com.wishlist.project.domain.models.User;
 import com.wishlist.project.repositories.ItemRepository;
+import com.wishlist.project.repositories.UserRepository;
 import com.wishlist.project.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,12 @@ import java.util.List;
 public class ItemService {
 
     private final ItemRepository itemRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public ItemService(ItemRepository itemRepository) {
+    public ItemService(ItemRepository itemRepository, UserRepository userRepository) {
         this.itemRepository = itemRepository;
+       this.userRepository = userRepository;
     }
 
     public void createItem(String name, long wishListId, String imageUrl, double price, String location, String notes) {
@@ -44,11 +48,17 @@ public class ItemService {
     }
 
     public User getUserByItemId(long id) {
-        return itemRepository.getUserByItemId(id);
+        return userRepository.getUserByItemId(id);
     }
 
     public void unreserveItemById(long id) {
         itemRepository.unreserveItemById(id);
+    }
+
+    public ItemUserDTO getItemInfoById(long id) {
+        Item item = getItemById(id);
+        User user = getUserByItemId(id);
+        return new ItemUserDTO(item, user);
     }
 }
 
