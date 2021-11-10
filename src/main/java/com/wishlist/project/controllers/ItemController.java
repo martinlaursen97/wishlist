@@ -52,8 +52,11 @@ public class ItemController {
 
     @GetMapping("/reserve")
     public String reserveItem(@RequestParam String id, WebRequest request) {
+
         if (request.getAttribute("user", WebRequest.SCOPE_SESSION) != null) {
-            itemService.reserveItemById(Long.parseLong(id));
+            long userId = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
+            long itemId = Long.parseLong(id);
+            itemService.reserveItemById(itemId, userId);
             return "reservedSuccess";
         } else {
             return "reservedNotLoggedIn";
@@ -67,11 +70,16 @@ public class ItemController {
     }
 
     @GetMapping("inspectItem")
-    public String inspectItem(@RequestParam String id, Model model) {
-        ItemUserDTO itemInfo = itemService.getItemInfoById(Long.parseLong(id));
-
-        model.addAttribute("item", itemInfo.getItem());
-        model.addAttribute("recipient", itemInfo.getUser());
-        return "inspectItem";
+    public String inspectItem(@RequestParam String id, Model model, WebRequest request) {
+        long userId = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
+        long itemId = Long.parseLong(id);
+        if (itemService.itemReservedByUser(itemId, userId)) {
+            ItemUserDTO itemInfo = itemService.getItemInfoById(itemId);
+            model.addAttribute("item", itemInfo.getItem());
+            model.addAttribute("recipient", itemInfo.getUser());
+            return "inspectItem";
+        } else {
+            return "error";
+        }
     }
 }

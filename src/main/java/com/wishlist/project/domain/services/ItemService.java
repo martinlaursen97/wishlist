@@ -34,19 +34,19 @@ public class ItemService {
     }
 
 
-    public void reserveItemById(long id) {
-        itemRepository.reserveItemById(id);
+    public void reserveItemById(long itemId, long userId) {
+        itemRepository.reserveItemById(itemId, userId);
     }
 
     public List<Item> getReservedItemsById(long id) {
         return itemRepository.getReservedItemsById(id);
     }
 
-    public Item getItemById(long id) {
+    private Item getItemById(long id) {
         return itemRepository.getItemById(id);
     }
 
-    public User getUserByItemId(long id) {
+    private User getUserByItemId(long id) {
         return userRepository.getUserByItemId(id);
     }
 
@@ -58,6 +58,11 @@ public class ItemService {
         Item item = getItemById(id);
         User user = getUserByItemId(id);
         return new ItemUserDTO(item, user);
+    }
+
+    public boolean itemReservedByUser(long itemId, long userId) {
+        Item item = getItemById(itemId);
+        return item.getReserverId() == userId;
     }
 }
 

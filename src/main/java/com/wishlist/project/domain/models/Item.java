@@ -10,10 +10,25 @@ public class Item {
     private String notes;
     private boolean reserved = false;
     private String date;
+    private long reserverId;
 
     public Item(String name, long wishListId, String imageUrl,
                 double price, String location,
+                String notes, String date, long reserverId) {
+        this.name = name;
+        this.wishListId = wishListId;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.location = location;
+        this.notes = notes;
+        this.date = date;
+        this.reserverId = reserverId;
+    }
+
+    public Item(long id, String name, long wishListId, String imageUrl,
+                double price, String location,
                 String notes, String date) {
+        this.id = id;
         this.name = name;
         this.wishListId = wishListId;
         this.imageUrl = imageUrl;
@@ -25,8 +40,19 @@ public class Item {
 
     public Item(long id, String name, long wishListId, String imageUrl,
                 double price, String location,
-                String notes, String date) {
+                String notes, String date, long reserverId) {
         this.id = id;
+        this.name = name;
+        this.wishListId = wishListId;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.location = location;
+        this.notes = notes;
+        this.date = date;
+        this.reserverId = reserverId;
+    }
+
+    public Item(String name, long wishListId, String imageUrl, double price, String location, String notes, String date) {
         this.name = name;
         this.wishListId = wishListId;
         this.imageUrl = imageUrl;
@@ -110,6 +136,14 @@ public class Item {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public long getReserverId() {
+        return reserverId;
+    }
+
+    public void setReserverId(long reserverId) {
+        this.reserverId = reserverId;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.wishlist.project.repositories;
 
 import com.wishlist.project.domain.models.Item;
-import com.wishlist.project.domain.models.User;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -39,9 +38,9 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public void reserveItemById(long id) {
+    public void reserveItemById(long itemId, long userId) {
         try {
-            String query = "UPDATE sql11449169.item SET reserved = true WHERE item_id = " + id;
+            String query = "UPDATE sql11449169.item SET reserved = true, reserver_id = " + userId + " WHERE item_id = " + itemId +";";
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
@@ -90,8 +89,6 @@ public class ItemRepositoryImpl implements ItemRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             resultSet.next();
-
-
             item.setId(resultSet.getLong("item_id"));
             item.setName(resultSet.getString("name"));
             item.setWishListId(resultSet.getLong("wishlist_id"));
@@ -101,8 +98,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             item.setNotes(resultSet.getString("notes"));
             item.setReserved(resultSet.getBoolean("reserved"));
             item.setDate(resultSet.getString("creation_date"));
-
-
+            item.setReserverId(resultSet.getLong("reserver_id"));
         } catch (SQLException ignore) {
 
         }
@@ -112,7 +108,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void unreserveItemById(long id) {
         try {
-            String query = "UPDATE sql11449169.item SET reserved = false WHERE item_id = " + id;
+            String query = "UPDATE sql11449169.item SET reserved = false, reserver_id = -1 WHERE item_id = " + id;
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
@@ -140,6 +136,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                 item.setNotes(resultSet.getString("notes"));
                 item.setReserved(resultSet.getBoolean("reserved"));
                 item.setDate(resultSet.getString("creation_date"));
+                item.setReserverId(resultSet.getLong("reserver_id"));
                 items.add(item);
             }
         } catch (SQLException ignore) {
@@ -167,6 +164,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                 item.setNotes(resultSet.getString("notes"));
                 item.setReserved(resultSet.getBoolean("reserved"));
                 item.setDate(resultSet.getString("creation_date"));
+                item.setReserverId(resultSet.getLong("reserver_id"));
                 items.add(item);
             }
         } catch (SQLException ignore) {
