@@ -323,7 +323,7 @@ a, u {
     background-color: whitesmoke;
     height: 200px;
     border-radius: 5px;
-    outline: 2px solid grey;
+    outline: 2px solid #29d9dc;
     position: center;
 }
 

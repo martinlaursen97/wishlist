@@ -55,17 +55,17 @@
             <div style="text-decoration: none; color: black" class="item-object-inspect">
                 <img th:src="${item.imageUrl}" class="item-object-img"/>
 
-                <div class="item-object-text">
-                    <div class="item-object-name">
+                <div class="item-object-text" style="width: 600px">
+                    <div class="item-object-name" style="width: 600px">
                         <b>Name: </b><td th:text="${item.name}"></td>
                     </div>
-                    <div class="item-object-notes">
+                    <div class="item-object-notes" style="width: 600px">
                         <b>Notes: </b><td th:text="${item.notes}"></td>
                     </div>
-                    <div class="item-object-location">
+                    <div class="item-object-location" style="width: 600px">
                         <b>Located: </b> <td th:text="${item.location}"></td>
                     </div>
-                    <div class="item-object-price">
+                    <div class="item-object-price" style="width: 600px">
                         <b>Price: </b><b><td th:text="${item.price}"></td></b>
                     </div>
                 </div>
