@@ -7,8 +7,15 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+:root {
+    --first: #4797a6;
+    --second: #29d9dc;
+    --btn: #70c1c7;
+    --hover: #4797a6;
+}
+
 .btn-box {
-    background-color: #9befed;
+    background-color: var(--first);
     height: 100px;
     width: 100%;
 }
@@ -48,7 +55,7 @@ body {
     font-size: 16px;
     color: white;
     border: solid 3px white;
-    background-color: #29d9dc;
+    background-color: var(--btn);
     border-radius: 60px;
     position: relative;
     margin-top: -25px;
@@ -61,7 +68,7 @@ body {
     font-size: 16px;
     color: white;
     border: solid 3px white;
-    background-color: #29d9dc;
+    background-color: var(--btn);
     border-radius: 60px;
     position: relative;
     height: 50px;
@@ -74,7 +81,7 @@ body {
     margin-top: 100px;
     width: 400px;
     border-radius: 5px;
-    border: 2px solid #29d9dc;
+    border: 2px solid var(--first);
     margin-left: 200px;
 }
 
@@ -108,12 +115,12 @@ body {
 }
 
 .btn:hover {
-    background-color: #0c989b;
+    background-color: var(--hover);
     color: whitesmoke;
 }
 
 .btn-index:hover {
-    background-color: #0a7b7c;
+    background-color: var(--hover);
 }
 
 .btn-divider {
@@ -149,7 +156,7 @@ body {
     width: 800px;
     background-color: whitesmoke;
     border-radius: 5px;
-    border: 2px solid #29d9dc
+    border: 2px solid var(--first);
 }
 .content-box {
     margin-bottom: 25px;
@@ -160,7 +167,7 @@ body {
 
 
 .dropbtn {
-    background-color: #9befed;
+    background-color: var(--first);
     color: white;
     height: 100px;
     width: 200px;
@@ -174,7 +181,7 @@ body {
     width: 300px;
     border: 3px solid grey;
     display: inline;
-    background-color: #29d9dc;
+    background-color: var(--btn);
     font-size: 25px;
     color: white;
     cursor: pointer;
@@ -182,7 +189,7 @@ body {
 }
 
 .remove-res-btn:hover {
-    background-color: #0c989b;
+    background-color: var(--hover);
     color:white;
 }
 
@@ -190,9 +197,9 @@ body {
     height: 50px;
     border-radius: 10px;
     width: 300px;
-    border: 3px solid grey;
+    border: 3px solid black;
     display: inline;
-    background-color: #29d9dc;
+    background-color: var(--btn);
     font-size: 25px;
     color: white;
     cursor: pointer;
@@ -200,7 +207,7 @@ body {
 }
 
 .add-wish-btn:hover {
-    background-color: #0c989b;
+    background-color: var(--hover);
 }
 
 .wish-btn-container {
@@ -243,7 +250,7 @@ body {
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #29d9dc;;}
+.dropdown:hover .dropbtn {background-color: var(--hover);}
 
 * {
     box-sizing: border-box;
@@ -275,7 +282,7 @@ form.example::after {
     font-size:20px;
     height: 30px;
     width: 600px;
-    background-color: #29d9dc;
+    background-color: var(--first);
     color: white;
 }
 
@@ -313,7 +320,7 @@ a, u {
     background-color: whitesmoke;
     height: 200px;
     border-radius: 5px;
-    outline: 2px solid #29d9dc;
+    outline: 2px solid var(--first);
     position: relative;
 }
 
@@ -323,7 +330,7 @@ a, u {
     background-color: whitesmoke;
     height: 200px;
     border-radius: 5px;
-    outline: 2px solid #29d9dc;
+    outline: 2px solid var(--first);
     position: center;
 }
 
@@ -335,7 +342,7 @@ a, u {
     float: left;
     height: 200px;
     width: 200px;
-    border-right: 2px solid #29d9dc;
+    border-right: 2px solid var(--first);
 }
 
 .item-object-text {
