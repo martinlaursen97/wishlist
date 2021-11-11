@@ -18,7 +18,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void createItem(Item item) {
         try {
-            String query = "insert into sql11449169.item(name, wishlist_id, image_url, price, location, notes, reserved, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into heroku_9fe615c2f166282.item(name, wishlist_id, image_url, price, location, notes, reserved, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
             preparedStatement = connection.prepareStatement(query);
@@ -30,6 +30,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             preparedStatement.setString(6, item.getNotes());
             preparedStatement.setBoolean(7, item.isReserved());
             preparedStatement.setString(8, item.getDate());
+            preparedStatement.setString(9, item.getDate());
             preparedStatement.executeUpdate();
 
         } catch (Exception ignore) {
@@ -40,7 +41,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void reserveItemById(long itemId, long userId) {
         try {
-            String query = "UPDATE sql11449169.item SET reserved = true, reserver_id = " + userId + " WHERE item_id = " + itemId +";";
+            String query = "UPDATE heroku_9fe615c2f166282.item SET reserved = true, reserver_id = " + userId + " WHERE item_id = " + itemId +";";
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
