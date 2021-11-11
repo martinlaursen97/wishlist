@@ -64,6 +64,10 @@ public class ItemService {
         Item item = getItemById(itemId);
         return item.getReserverId() == userId;
     }
+
+    public boolean itemReserved(long itemId) {
+        return itemRepository.itemReserved(itemId);
+    }
 }
 
 

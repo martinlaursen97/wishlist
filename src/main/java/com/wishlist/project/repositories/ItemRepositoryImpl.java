@@ -53,9 +53,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     public List<Item> getReservedItemsById(long id) {
         List<Item> items = new ArrayList<>();
         try {
-            String query = "SELECT i.item_id, i.name, i.wishlist_id, i.image_url, i.price, i.location, i.notes, i.reserved, i.creation_date" +
-                    " FROM heroku_9fe615c2f166282.item i JOIN heroku_9fe615c2f166282.wishlist w ON w.wishlist_id = i.wishlist_id WHERE user_id = " + id + " AND " +
-                    "i.reserved = true";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.item WHERE reserver_id = " + id + " AND reserved = true;";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -188,5 +186,22 @@ public class ItemRepositoryImpl implements ItemRepository {
 
         }
         return size;
+    }
+
+    @Override
+    public boolean itemReserved(long itemId) {
+        boolean reserved = false;
+
+        try {
+            String query = "SELECT reserved FROM heroku_9fe615c2f166282.item WHERE item_id = " + itemId;
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            reserved  = resultSet.getBoolean(1);
+
+        } catch (SQLException ignore) {
+
+        }
+        return reserved;
     }
 }

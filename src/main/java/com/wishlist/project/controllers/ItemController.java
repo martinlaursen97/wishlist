@@ -56,8 +56,12 @@ public class ItemController {
         if (request.getAttribute("user", WebRequest.SCOPE_SESSION) != null) {
             long userId = (long) request.getAttribute("id", WebRequest.SCOPE_SESSION);
             long itemId = Long.parseLong(id);
-            itemService.reserveItemById(itemId, userId);
-            return "reservedSuccess";
+            if (!itemService.itemReserved(itemId)) {
+                itemService.reserveItemById(itemId, userId);
+                return "reservedSuccess";
+            } else {
+                return "error";
+            }
         } else {
             return "reservedNotLoggedIn";
         }

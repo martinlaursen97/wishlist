@@ -15,4 +15,6 @@ public interface ItemRepository {
     List<Item> findNotReservedItemsByWishlistId(long id);
     List<Item> getItemsByWishlistId(long id);
     int getWishlistSizeById(long id);
+
+    boolean itemReserved(long itemId);
 }
