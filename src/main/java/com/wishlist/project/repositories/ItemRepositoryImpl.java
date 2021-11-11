@@ -30,7 +30,6 @@ public class ItemRepositoryImpl implements ItemRepository {
             preparedStatement.setString(6, item.getNotes());
             preparedStatement.setBoolean(7, item.isReserved());
             preparedStatement.setString(8, item.getDate());
-            preparedStatement.setString(9, item.getDate());
             preparedStatement.executeUpdate();
 
         } catch (Exception ignore) {
