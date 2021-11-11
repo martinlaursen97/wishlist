@@ -13,7 +13,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void createUser(User user) {
         try {
-            String query = "insert into sql11449169.user(username, password, email, phone, street, city, zip, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into heroku_9fe615c2f166282.user(username, password, email, phone, street, city, zip, creation_date) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
             preparedStatement = connection.prepareStatement(query);
@@ -37,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
         boolean valid = false;
 
         try {
-            String query = "SELECT * FROM sql11449169.user WHERE username = '" + username + "' AND password = " + password;
+            String query = "SELECT * FROM heroku_9fe615c2f166282.user WHERE username = '" + username + "' AND password = " + password;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -56,7 +56,7 @@ public class UserRepositoryImpl implements UserRepository {
         boolean valid = false;
 
         try {
-            String query = "SELECT * FROM sql11449169.user WHERE username = '" + username + "'";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.user WHERE username = '" + username + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -76,7 +76,7 @@ public class UserRepositoryImpl implements UserRepository {
         User user = new User();
 
         try {
-            String query = "SELECT * FROM sql11449169.user WHERE username = '" + username + "'";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.user WHERE username = '" + username + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -102,7 +102,7 @@ public class UserRepositoryImpl implements UserRepository {
         String name = null;
 
         try {
-            String query = "SELECT username FROM sql11449169.user WHERE user_id = " + userId;
+            String query = "SELECT username FROM heroku_9fe615c2f166282.user WHERE user_id = " + userId;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -119,8 +119,8 @@ public class UserRepositoryImpl implements UserRepository {
     public User getUserByItemId(long id) {
         User user = new User();
         try {
-            String query = "SELECT * FROM sql11449169.user u WHERE u.user_id = (SELECT user_id FROM sql11449169.wishlist w " +
-                    "JOIN sql11449169.item i ON w.wishlist_id = i.wishlist_id WHERE i.item_id = 1);";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.user u WHERE u.user_id = (SELECT user_id FROM heroku_9fe615c2f166282.wishlist w " +
+                    "JOIN heroku_9fe615c2f166282.item i ON w.wishlist_id = i.wishlist_id WHERE i.item_id = 1);";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();

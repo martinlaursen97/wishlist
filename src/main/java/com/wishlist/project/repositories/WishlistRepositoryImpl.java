@@ -20,7 +20,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     @Override
     public void createWishlist(Wishlist wishlist) {
         try {
-            String query = "insert into sql11449169.wishlist(user_id,name,notes,code,creation_date) values (?, ?, ?, ?, ?)";
+            String query = "insert into heroku_9fe615c2f166282.wishlist(user_id,name,notes,code,creation_date) values (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement;
 
             preparedStatement = connection.prepareStatement(query);
@@ -40,7 +40,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     public List<Wishlist> getWishlists(long id) {
         List<Wishlist> wishlists = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11449169.wishlist WHERE user_id = " + id + " ORDER BY wishlist_id DESC";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.wishlist WHERE user_id = " + id + " ORDER BY wishlist_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -63,7 +63,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     @Override
     public void clearWishlistsById(long id) {
         try {
-            String query = "DELETE FROM sql11449169.wishlist WHERE user_id = " + id;
+            String query = "DELETE FROM heroku_9fe615c2f166282.wishlist WHERE user_id = " + id;
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
@@ -77,7 +77,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
         Wishlist wishlist = new Wishlist();
 
         try {
-            String query = "SELECT * FROM sql11449169.wishlist WHERE wishlist_id = " + id;
+            String query = "SELECT * FROM heroku_9fe615c2f166282.wishlist WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -98,7 +98,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     @Override
     public void clearWishlistById(long id) {
         try {
-            String query = "DELETE FROM sql11449169.wishlist WHERE wishlist_id = " + id;
+            String query = "DELETE FROM heroku_9fe615c2f166282.wishlist WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
@@ -112,7 +112,7 @@ public class WishlistRepositoryImpl implements WishlistRepository {
         Wishlist wishlist = new Wishlist();
 
         try {
-            String query = "SELECT * FROM sql11449169.wishlist WHERE code = '" + code  + "'";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.wishlist WHERE code = '" + code  + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();

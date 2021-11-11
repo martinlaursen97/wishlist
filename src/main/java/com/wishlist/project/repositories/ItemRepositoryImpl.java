@@ -54,7 +54,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         List<Item> items = new ArrayList<>();
         try {
             String query = "SELECT i.item_id, i.name, i.wishlist_id, i.image_url, i.price, i.location, i.notes, i.reserved, i.creation_date" +
-                    " FROM sql11449169.item i JOIN sql11449169.wishlist w ON w.wishlist_id = i.wishlist_id WHERE user_id = " + id + " AND " +
+                    " FROM heroku_9fe615c2f166282.item i JOIN heroku_9fe615c2f166282.wishlist w ON w.wishlist_id = i.wishlist_id WHERE user_id = " + id + " AND " +
                     "i.reserved = true";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -83,7 +83,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     public Item getItemById(long id) {
         Item item = new Item();
         try {
-            String query = "SELECT * FROM sql11449169.item WHERE item_id = " + id;
+            String query = "SELECT * FROM heroku_9fe615c2f166282.item WHERE item_id = " + id;
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -108,7 +108,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void unreserveItemById(long id) {
         try {
-            String query = "UPDATE sql11449169.item SET reserved = false, reserver_id = -1 WHERE item_id = " + id;
+            String query = "UPDATE heroku_9fe615c2f166282.item SET reserved = false, reserver_id = -1 WHERE item_id = " + id;
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
@@ -121,7 +121,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     public List<Item> findNotReservedItemsByWishlistId(long id) {
         List<Item> items = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id + " AND reserved = false";
+            String query = "SELECT * FROM heroku_9fe615c2f166282.item WHERE wishlist_id = " + id + " AND reserved = false";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -149,7 +149,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     public List<Item> getItemsByWishlistId(long id) {
         List<Item> items = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sql11449169.item WHERE wishlist_id = " + id;
+            String query = "SELECT * FROM heroku_9fe615c2f166282.item WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -178,7 +178,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         int size = 0;
 
         try {
-            String query = "SELECT count(*) FROM sql11449169.item WHERE wishlist_id = " + id;
+            String query = "SELECT count(*) FROM heroku_9fe615c2f166282.item WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
