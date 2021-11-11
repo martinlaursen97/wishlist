@@ -121,10 +121,10 @@ body {
 }
 
 .logo {
-    height: 90px;
+    height: 70px;
     width: auto;
     position: absolute;
-    margin: 5px;
+    margin: 10px 10px 10px 50px;
 }
 
 .row {
