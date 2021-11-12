@@ -74,4 +74,8 @@ public class WishlistService {
     public List<Item> getItemsByWishlistId(long id) {
         return itemRepository.getItemsByWishlistId(id);
     }
+
+    public boolean wishlistExistsByCode(String code) {
+        return wishlistRepository.wishlistExistsByCode(code);
+    }
 }

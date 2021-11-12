@@ -15,4 +15,6 @@ public interface WishlistRepository {
     void clearWishlistById(long id);
     Wishlist findWishlistByCode(String code);
     String generateCode();
+
+    boolean wishlistExistsByCode(String code);
 }

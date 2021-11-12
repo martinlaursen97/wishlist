@@ -138,5 +138,19 @@ public class WishlistRepositoryImpl implements WishlistRepository {
         }
         return code;
     }
+
+    @Override
+    public boolean wishlistExistsByCode(String code) {
+        boolean exists = false;
+        try {
+            String query = "SELECT * FROM heroku_9fe615c2f166282.wishlist WHERE code = '" + code + "'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            exists = resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
 }
 

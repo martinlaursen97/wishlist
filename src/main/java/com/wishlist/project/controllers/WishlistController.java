@@ -89,8 +89,11 @@ public class WishlistController {
 
     @GetMapping("/view")
     public String wishlistShared(@RequestParam String code, Model model, WebRequest request) {
-        SharedDTO wishlistInfo = wishlistService.getWishlistInfoByCode(code);
+        if (!wishlistService.wishlistExistsByCode(code)) {
+            return "error";
+        }
 
+        SharedDTO wishlistInfo = wishlistService.getWishlistInfoByCode(code);
         model.addAttribute("wishlist", wishlistInfo.getWishlist());
         model.addAttribute("items", wishlistInfo.getItems());
         model.addAttribute("recipient", wishlistInfo.getUser());
