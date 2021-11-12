@@ -132,7 +132,6 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
             code = resultSet.getString(1);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
