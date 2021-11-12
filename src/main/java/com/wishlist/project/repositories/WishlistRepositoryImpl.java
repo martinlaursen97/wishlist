@@ -1,7 +1,5 @@
 package com.wishlist.project.repositories;
 
-import com.wishlist.project.domain.models.Item;
-import com.wishlist.project.domain.models.User;
 import com.wishlist.project.domain.models.Wishlist;
 import org.springframework.stereotype.Repository;
 
@@ -30,9 +28,8 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             preparedStatement.setString(4, wishlist.getCode());
             preparedStatement.setString(5, wishlist.getDate());
             preparedStatement.executeUpdate();
-
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -54,8 +51,8 @@ public class WishlistRepositoryImpl implements WishlistRepository {
                 wishList.setDate(resultSet.getString("creation_date"));
                 wishlists.add(wishList);
             }
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return wishlists;
     }
@@ -67,15 +64,14 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public Wishlist findWishlistById(long id) {
         Wishlist wishlist = new Wishlist();
-
         try {
             String query = "SELECT * FROM heroku_9fe615c2f166282.wishlist WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -88,10 +84,9 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             wishlist.setNotes(resultSet.getString("notes"));
             wishlist.setCode(resultSet.getString("code"));
             wishlist.setDate(resultSet.getString("creation_date"));
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return wishlist;
     }
 
@@ -102,15 +97,14 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public Wishlist findWishlistByCode(String code) {
         Wishlist wishlist = new Wishlist();
-
         try {
             String query = "SELECT * FROM heroku_9fe615c2f166282.wishlist WHERE code = '" + code  + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -123,17 +117,15 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             wishlist.setNotes(resultSet.getString("notes"));
             wishlist.setCode(resultSet.getString("code"));
             wishlist.setDate(resultSet.getString("creation_date"));
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return wishlist;
     }
 
     @Override
     public String generateCode() {
         String code = null;
-
         try {
             String query = "SELECT LEFT(UUID(), 8)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -141,8 +133,8 @@ public class WishlistRepositoryImpl implements WishlistRepository {
             resultSet.next();
             code = resultSet.getString(1);
 
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return code;
     }

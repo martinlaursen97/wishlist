@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository {
+
     void createUser(User user);
     boolean loginValid(String username, String password);
     boolean usernameTaken(String username);

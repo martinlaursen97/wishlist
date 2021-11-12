@@ -145,17 +145,5 @@ public class Item {
     public void setReserverId(long reserverId) {
         this.reserverId = reserverId;
     }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", price=" + price +
-                ", location='" + location + '\'' +
-                ", notes='" + notes + '\'' +
-                ", reserved=" + reserved +
-                '}';
-    }
 }
 

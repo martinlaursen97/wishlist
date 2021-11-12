@@ -32,8 +32,8 @@ public class ItemRepositoryImpl implements ItemRepository {
             preparedStatement.setString(8, item.getDate());
             preparedStatement.executeUpdate();
 
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -44,8 +44,8 @@ public class ItemRepositoryImpl implements ItemRepository {
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -71,8 +71,8 @@ public class ItemRepositoryImpl implements ItemRepository {
                 item.setDate(resultSet.getString("creation_date"));
                 items.add(item);
             }
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return items;
     }
@@ -97,8 +97,8 @@ public class ItemRepositoryImpl implements ItemRepository {
             item.setReserved(resultSet.getBoolean("reserved"));
             item.setDate(resultSet.getString("creation_date"));
             item.setReserverId(resultSet.getLong("reserver_id"));
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return item;
     }
@@ -110,8 +110,8 @@ public class ItemRepositoryImpl implements ItemRepository {
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -137,8 +137,8 @@ public class ItemRepositoryImpl implements ItemRepository {
                 item.setReserverId(resultSet.getLong("reserver_id"));
                 items.add(item);
             }
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return items;
     }
@@ -165,8 +165,8 @@ public class ItemRepositoryImpl implements ItemRepository {
                 item.setReserverId(resultSet.getLong("reserver_id"));
                 items.add(item);
             }
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return items;
     }
@@ -174,16 +174,14 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public int getWishlistSizeById(long id) {
         int size = 0;
-
         try {
             String query = "SELECT count(*) FROM heroku_9fe615c2f166282.item WHERE wishlist_id = " + id;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
             size = resultSet.getInt(1);
-
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return size;
     }
@@ -191,7 +189,6 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public boolean itemReserved(long itemId) {
         boolean reserved = false;
-
         try {
             String query = "SELECT reserved FROM heroku_9fe615c2f166282.item WHERE item_id = " + itemId;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -199,8 +196,8 @@ public class ItemRepositoryImpl implements ItemRepository {
             resultSet.next();
             reserved  = resultSet.getBoolean(1);
 
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return reserved;
     }

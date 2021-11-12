@@ -26,16 +26,14 @@ public class UserRepositoryImpl implements UserRepository {
             preparedStatement.setString(7, user.getZip());
             preparedStatement.setString(8, user.getDate());
             preparedStatement.executeUpdate();
-
-        } catch (Exception ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public boolean loginValid(String username, String password) {
         boolean valid = false;
-
         try {
             String query = "SELECT * FROM heroku_9fe615c2f166282.user WHERE username = '" + username + "' AND password = " + password;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -43,18 +41,15 @@ public class UserRepositoryImpl implements UserRepository {
             if (resultSet.next()) {
                 valid = true;
             }
-
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return valid;
     }
 
     @Override
     public boolean usernameTaken(String username) {
         boolean valid = false;
-
         try {
             String query = "SELECT * FROM heroku_9fe615c2f166282.user WHERE username = '" + username + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -63,18 +58,15 @@ public class UserRepositoryImpl implements UserRepository {
             if (resultSet.next()) {
                 valid = true;
             }
-
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return valid;
     }
 
     @Override
     public User findByUsername(String username) {
         User user = new User();
-
         try {
             String query = "SELECT * FROM heroku_9fe615c2f166282.user WHERE username = '" + username + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -90,17 +82,15 @@ public class UserRepositoryImpl implements UserRepository {
             user.setCity(resultSet.getString(7));
             user.setZip(resultSet.getString(8));
             user.setDate(resultSet.getString(9));
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return user;
     }
 
     @Override
     public String getNameById(long userId) {
         String name = null;
-
         try {
             String query = "SELECT username FROM heroku_9fe615c2f166282.user WHERE user_id = " + userId;
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -111,7 +101,6 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (SQLException ignore) {
 
         }
-
         return name;
     }
 
@@ -134,10 +123,9 @@ public class UserRepositoryImpl implements UserRepository {
             user.setCity(resultSet.getString(7));
             user.setZip(resultSet.getString(8));
             user.setDate(resultSet.getString(9));
-        } catch (SQLException ignore) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return user;
     }
 }

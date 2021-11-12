@@ -7,6 +7,7 @@ import java.util.List;
 
 @Repository
 public interface ItemRepository {
+
     void createItem(Item item);
     void reserveItemById(long itemId, long id);
     List<Item> getReservedItemsById(long id);
@@ -15,6 +16,5 @@ public interface ItemRepository {
     List<Item> findNotReservedItemsByWishlistId(long id);
     List<Item> getItemsByWishlistId(long id);
     int getWishlistSizeById(long id);
-
     boolean itemReserved(long itemId);
 }
