@@ -48,7 +48,7 @@
             <br>
             Notes: <td th:text="${wishlist.notes}"></td>
             <br>
-            Code: <td th:text="${wishlist.code}"></td>
+            Share link: <a>https://iwish-kea.herokuapp.com/view?code=<td th:text="${wishlist.code}"></td></a>
         </div>
         <div class ="object-divider"></div>
         <tr th:each="item: ${items}">

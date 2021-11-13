@@ -148,6 +148,7 @@ body {
     text-align: center;
     width: 800px;
     background-color: whitesmoke;
+    border: 2px solid var(--first);
 }
 
 .wishlist-container {

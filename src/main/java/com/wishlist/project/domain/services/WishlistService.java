@@ -40,10 +40,11 @@ public class WishlistService {
 
     public SharedDTO getWishlistInfoByCode(String code) {
         Wishlist wishlist = findWishlistByCode(code);
-        long id = wishlist.getId();
-        User user = userRepository.findByUsername(getNameById(id));
-        List<Item> items = itemRepository.findNotReservedItemsByWishlistId(id);
-        int size = itemRepository.getWishlistSizeById(id);
+        long userId = wishlist.getUserId();
+        long wishlistId = wishlist.getId();
+        User user = userRepository.findByUsername(getNameById(userId));
+        List<Item> items = itemRepository.findNotReservedItemsByWishlistId(wishlistId);
+        int size = itemRepository.getWishlistSizeById(wishlistId);
         return new SharedDTO(wishlist, user, items, size);
     }
 
